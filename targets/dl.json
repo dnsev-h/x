@@ -1,0 +1,57 @@
+{
+	"files": [
+		{ "file": "../src/gallery-downloader/main.js" }
+	],
+	"options": {
+		"debug": true,
+		"bare": true
+	},
+	"target": "../builds/x-dl.user.js",
+	"targetMeta": "../builds/x-dl.meta.js",
+	"header": {
+		"name": "x/dl",
+		"version": "1.0.0",
+		"author": "dnsev-h",
+		"namespace": "dnsev-h",
+		"description": "Download galleries",
+		"grant": [
+			"GM_xmlhttpRequest",
+			"GM_getValue",
+			"GM_setValue",
+			"GM_deleteValue",
+			"GM.xmlHttpRequest",
+			"GM.getValue",
+			"GM.setValue",
+			"GM.deleteValue"
+		],
+		"connect": [
+			"exhentai.org",
+			"e-hentai.org",
+			"ehgt.org",
+			"*"
+		],
+		"run-at": "document-start",
+		"include": [
+			"http://exhentai.org/*",
+			"https://exhentai.org/*",
+			"http://e-hentai.org/*",
+			"https://e-hentai.org/*"
+		],
+		"icon": {
+			"value": "../images/icon-48.png",
+			"transform": "toDataUrl"
+		},
+		"icon64": {
+			"value": "../images/icon-64.png",
+			"transform": "toDataUrl"
+		},
+		"buildDate": {
+			"value": "date",
+			"transform": "info"
+		},
+		"homepage": "https://dnsev-h.github.io/x/",
+		"supportURL": "https://github.com/dnsev-h/x/issues",
+		"updateURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-dl.meta.js",
+		"downloadURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-dl.user.js"
+	}
+}

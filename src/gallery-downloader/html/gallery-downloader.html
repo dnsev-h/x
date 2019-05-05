@@ -1,0 +1,304 @@
+<div class="x-gallery-downloader">
+	<div class="x-gallery-downloader-section-group">
+		<div class="x-gallery-downloader-section-header">
+			<a class="x-gallery-downloader-download-button">Begin Download</a>
+		</div>
+
+		<div class="x-gallery-downloader-progress x-gallery-downloader-progress-total">
+			<div class="x-gallery-downloader-progress-bar">
+				<div class="x-gallery-downloader-progress-bar-completed" style="width: 50%;"></div>
+				<div class="x-gallery-downloader-progress-bar-timeout" style="left: 20%;"></div>
+				<div class="x-gallery-downloader-progress-bar-info">
+					<span class="x-gallery-downloader-progress-bar-info-percent"><span class="x-gallery-downloader-progress-bar-info-percent-current">50%</span> Complete</span>
+					<span class="x-gallery-downloader-progress-bar-info-images">(<span class="x-gallery-downloader-progress-bar-info-images-current">10</span> / <span class="x-gallery-downloader-progress-bar-info-images-total">105 images</span>)</span>
+					<span class="x-gallery-downloader-progress-bar-info-errors"><a>5 errors</a></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="x-gallery-downloader-progress x-gallery-downloader-progress-template">
+			<div class="x-gallery-downloader-progress-info">
+				<span class="x-gallery-downloader-progress-info-image-numbers">
+					<span class="x-gallery-downloader-progress-info-image-number-current">005</span> / <span class="x-gallery-downloader-progress-info-image-number-total">102</span>:
+				</span>
+				<span class="x-gallery-downloader-progress-info-file-name">image-filename.jpg</span>
+				<span class="x-gallery-downloader-progress-info-image-size">(full size)</span>
+				<span class="x-gallery-downloader-progress-info-links">
+					<span><a>Restart</a></span><span><a>Skip</a></span>
+				</span>
+			</div>
+			<div class="x-gallery-downloader-progress-bar">
+				<div class="x-gallery-downloader-progress-bar-completed" style="width: 50%;"></div>
+				<div class="x-gallery-downloader-progress-bar-timeout" style="left: 20%;"></div>
+				<div class="x-gallery-downloader-progress-bar-info">
+					<span class="x-gallery-downloader-progress-bar-info-percent"><span class="x-gallery-downloader-progress-bar-info-percent-current">50%</span> Complete</span>
+					<span class="x-gallery-downloader-progress-bar-info-bytes">(<span class="x-gallery-downloader-progress-bar-info-bytes-current">100KB</span> / <span class="x-gallery-downloader-progress-bar-info-bytes-total">2MB</span> @ <span class="x-gallery-downloader-progress-bar-info-bytes-per-second">5KB/s</span>)</span>
+					<span class="x-gallery-downloader-progress-bar-info-timeout"><span class="x-gallery-downloader-progress-bar-info-timeout-remaining">30 seconds</span> until timeout</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Settings -->
+	<div class="x-gallery-downloader-section-group">
+		<div class="x-gallery-downloader-section-header">Settings</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-title">Archive file name format</div>
+				<div class="x-gallery-downloader-section-description">Use the available tags described below to customize the output archive file name.</div>
+			</div>
+			<div class="x-gallery-downloader-section-right">
+				<div class="x-gallery-downloader-input-table-container">
+					<div class="x-gallery-downloader-input-table">
+						<div class="x-gallery-downloader-input-row x-gallery-downloader-input-header-row">
+							<div class="x-gallery-downloader-input-cell">Char limit</div>
+							<div class="x-gallery-downloader-input-cell">File name</div>
+						</div>
+						<div class="x-gallery-downloader-input-row">
+							<div class="x-gallery-downloader-input-cell">
+								<input class="x-gallery-downloader-section-input" type="number" min="1" autocomplete="off" spellcheck="false" data-x-gallery-downloader-option="archiveFileNameMaxLength" />
+							</div>
+							<div class="x-gallery-downloader-input-cell">
+								<input class="x-gallery-downloader-section-input" type="text" autocomplete="off" spellcheck="false" data-x-gallery-downloader-option="archiveFileName" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-title">Image file name format</div>
+				<div class="x-gallery-downloader-section-description">Use the available tags described below to customize the image file names.</div>
+			</div>
+			<div class="x-gallery-downloader-section-right">
+				<div class="x-gallery-downloader-input-table-container">
+					<div class="x-gallery-downloader-input-table">
+						<div class="x-gallery-downloader-input-row x-gallery-downloader-input-header-row">
+							<div class="x-gallery-downloader-input-cell">Char limit</div>
+							<div class="x-gallery-downloader-input-cell">File name</div>
+						</div>
+						<div class="x-gallery-downloader-input-row">
+							<div class="x-gallery-downloader-input-cell">
+								<input class="x-gallery-downloader-section-input" type="number" min="1" autocomplete="off" spellcheck="false" data-x-gallery-downloader-option="imageFileNameMaxLength" />
+							</div>
+							<div class="x-gallery-downloader-input-cell">
+								<input class="x-gallery-downloader-section-input" type="text" autocomplete="off" spellcheck="false" data-x-gallery-downloader-option="imageFileName" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-title">JSON info file name</div>
+				<div class="x-gallery-downloader-section-description">Sets the name of the archive descriptor JSON file. Leave empty to omit the file.</div>
+			</div>
+			<div class="x-gallery-downloader-section-right">
+				<div class="x-gallery-downloader-input-table-container">
+					<div class="x-gallery-downloader-input-table">
+						<div class="x-gallery-downloader-input-row x-gallery-downloader-input-header-row">
+							<div class="x-gallery-downloader-input-cell">File name</div>
+						</div>
+						<div class="x-gallery-downloader-input-row">
+							<div class="x-gallery-downloader-input-cell">
+								<input class="x-gallery-downloader-section-input" type="text" autocomplete="off" spellcheck="false" data-x-gallery-downloader-option="jsonInfoFileName" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-title">Prefer original image size</div>
+				<div class="x-gallery-downloader-section-description">Downloads images in their original size if the gallery contains resized images.</div>
+			</div>
+			<div class="x-gallery-downloader-section-right">
+				<div class="x-gallery-downloader-input-table-container">
+					<label class="lc"><input class="x-gallery-downloader-section-input" type="checkbox" data-x-gallery-downloader-option="preferOriginalImageSize" /><span></span></label>
+				</div>
+			</div>
+		</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-title">Download timeout <span class="x-gallery-downloader-light-text">(seconds)</span></div>
+				<div class="x-gallery-downloader-section-description">Maximum time allowed to download an image.</div>
+			</div>
+			<div class="x-gallery-downloader-section-right">
+				<div class="x-gallery-downloader-input-table-container">
+					<div class="x-gallery-downloader-input-table">
+						<div class="x-gallery-downloader-input-row x-gallery-downloader-input-header-row">
+							<div class="x-gallery-downloader-input-cell" title="H@H servers are the default downloading source for resized images.">H@H servers</div>
+							<div class="x-gallery-downloader-input-cell">Backup servers</div>
+						</div>
+						<div class="x-gallery-downloader-input-row">
+							<div class="x-gallery-downloader-input-cell">
+								<input class="x-gallery-downloader-section-input" type="number" min="0" autocomplete="off" spellcheck="false" data-x-gallery-downloader-option="hathImageDownloadTimeout" />
+							</div>
+							<div class="x-gallery-downloader-input-cell">
+								<input class="x-gallery-downloader-section-input" type="number" min="0" autocomplete="off" spellcheck="false" data-x-gallery-downloader-option="originalImageDownloadTimeout" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-title">Maximum download attempts</div>
+				<div class="x-gallery-downloader-section-description">Maximum attempts allowed to download an image.</div>
+			</div>
+			<div class="x-gallery-downloader-section-right">
+				<div class="x-gallery-downloader-input-table-container">
+					<div class="x-gallery-downloader-input-table">
+						<div class="x-gallery-downloader-input-row x-gallery-downloader-input-header-row">
+							<div class="x-gallery-downloader-input-cell" title="H@H servers are the default downloading source for resized images.">H@H servers</div>
+							<div class="x-gallery-downloader-input-cell">Backup servers</div>
+						</div>
+						<div class="x-gallery-downloader-input-row">
+							<div class="x-gallery-downloader-input-cell">
+								<input class="x-gallery-downloader-section-input" type="number" min="0" autocomplete="off" spellcheck="false" data-x-gallery-downloader-option="hathImageDownloadMaxAttemps" />
+							</div>
+							<div class="x-gallery-downloader-input-cell">
+								<input class="x-gallery-downloader-section-input" type="number" min="0" autocomplete="off" spellcheck="false" data-x-gallery-downloader-option="originalImageDownloadMaxAttemps" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-title">Download limit indicator update rate <span class="x-gallery-downloader-light-text">(per # images)</span></div>
+				<div class="x-gallery-downloader-section-description">How frequently the download limits should be checked while downloading images.</div>
+			</div>
+			<div class="x-gallery-downloader-section-right">
+				<div class="x-gallery-downloader-input-table-container">
+					<div class="x-gallery-downloader-input-table">
+						<div class="x-gallery-downloader-input-row x-gallery-downloader-input-header-row">
+							<div class="x-gallery-downloader-input-cell"></div>
+						</div>
+						<div class="x-gallery-downloader-input-row">
+							<div class="x-gallery-downloader-input-cell">
+								<input class="x-gallery-downloader-section-input" type="number" min="1" autocomplete="off" spellcheck="false" data-x-gallery-downloader-option="imageLimitIndicatorUpdateRate" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-title">Concurrent downloads</div>
+				<div class="x-gallery-downloader-section-description">How many images are allowed to be downloaded concurrently.</div>
+			</div>
+			<div class="x-gallery-downloader-section-right">
+				<div class="x-gallery-downloader-input-table-container">
+					<div class="x-gallery-downloader-input-table">
+						<div class="x-gallery-downloader-input-row x-gallery-downloader-input-header-row">
+							<div class="x-gallery-downloader-input-cell"></div>
+						</div>
+						<div class="x-gallery-downloader-input-row">
+							<div class="x-gallery-downloader-input-cell">
+								<input class="x-gallery-downloader-section-input" type="number" min="1" autocomplete="off" spellcheck="false" data-x-gallery-downloader-option="maxConcurrentImageDownloads" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Format flags -->
+	<div class="x-gallery-downloader-section-group">
+		<div class="x-gallery-downloader-section-header">Format Tags</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-description">
+					<code>{gallery_short_name}</code> <span class="x-gallery-downloader-light-text">(available for archive and images)</span>
+				</div>
+				<div class="x-gallery-downloader-section-description">
+						The shortened gallery name. <em>Example: <span data-x-gallery-downloader-format-tag-example="gallery_short_name"></span></em>
+				</div>
+			</div>
+		</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-description">
+					<code>{gallery_long_name}</code> <span class="x-gallery-downloader-light-text">(available for archive and images)</span>
+				</div>
+				<div class="x-gallery-downloader-section-description">
+						The full gallery name. <em>Example: <span data-x-gallery-downloader-format-tag-example="gallery_long_name"></span></em>
+				</div>
+			</div>
+		</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-description">
+					<code>{gallery_short_name_jp}</code> <span class="x-gallery-downloader-light-text">(available for archive and images)</span>
+				</div>
+				<div class="x-gallery-downloader-section-description">
+						The shortened gallery name in Japanese, if available. <em>Example: <span data-x-gallery-downloader-format-tag-example="gallery_short_name_jp"></span></em>
+				</div>
+			</div>
+		</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-description">
+					<code>{gallery_long_name_jp}</code> <span class="x-gallery-downloader-light-text">(available for archive and images)</span>
+				</div>
+				<div class="x-gallery-downloader-section-description">
+					The full gallery name in Japanese, if available. <em>Example: <span data-x-gallery-downloader-format-tag-example="gallery_long_name_jp"></span></em>
+				</div>
+			</div>
+		</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-description">
+					<code>{image_name}</code> <span class="x-gallery-downloader-light-text">(available for images)</span>
+				</div>
+				<div class="x-gallery-downloader-section-description">
+					The original image name. <em>Example: <span data-x-gallery-downloader-format-tag-example="image_name"></span></em>
+				</div>
+			</div>
+		</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-description">
+					<code>{image_number}</code> <span class="x-gallery-downloader-light-text">(available for images)</span>
+				</div>
+				<div class="x-gallery-downloader-section-description">
+					The original number of the image.
+				</div>
+			</div>
+		</div>
+
+		<div class="x-gallery-downloader-section">
+			<div class="x-gallery-downloader-section-left">
+				<div class="x-gallery-downloader-section-description">
+					<code>{number}</code> <span class="x-gallery-downloader-light-text">(available for images)</span>
+				</div>
+				<div class="x-gallery-downloader-section-description">
+					Re-indexed numbers for the images starting at 1.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
