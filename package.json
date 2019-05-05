@@ -1,0 +1,29 @@
+{
+	"name": "x",
+	"version": "1.0.0",
+	"author": "dnsev-h",
+	"description": "Various scripts",
+	"dependencies": {},
+	"devDependencies": {
+		"browserify": "^16.2.3",
+		"browserify-css": "^0.14.0",
+		"html2js-browserify": "^1.3.0",
+		"http-server": "^0.11.1"
+	},
+	"scripts": {
+		"build": "node dev/build.js",
+		"server": "http-server ./builds -a 127.0.0.1 -p 8080 -c-1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/dnsev-h/x.git"
+	},
+	"keywords": [
+		"userscript"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/dnsev-h/x/issues"
+	},
+	"homepage": "https://dnsev-h.github.io/x/"
+}
