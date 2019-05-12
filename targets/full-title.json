@@ -1,27 +1,19 @@
 {
 	"files": [
-		{ "file": "../src/random/main.js" }
+		{ "file": "../src/full-title/main.js" }
 	],
 	"options": {
 		"debug": true,
 		"bare": true
 	},
-	"target": "../builds/x-random.user.js",
-	"targetMeta": "../builds/x-random.meta.js",
+	"target": "../builds/x-full-title.user.js",
+	"targetMeta": "../builds/x-full-title.meta.js",
 	"header": {
-		"name": "x/random",
+		"name": "x/full-title",
 		"version": "1.0.0",
 		"author": "dnsev-h",
 		"namespace": "dnsev-h",
-		"description": "Go to a random page",
-		"grant": [
-			"GM_xmlhttpRequest",
-			"GM.xmlHttpRequest"
-		],
-		"connect": [
-			"exhentai.org",
-			"e-hentai.org"
-		],
+		"description": "Show the full title of galleries on mouse hover",
 		"run-at": "document-start",
 		"include": [
 			"http://exhentai.org/*",
@@ -39,7 +31,7 @@
 		},
 		"homepage": "https://dnsev-h.github.io/x/",
 		"supportURL": "https://github.com/dnsev-h/x/issues",
-		"updateURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-random.meta.js",
-		"downloadURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-random.user.js"
+		"updateURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-full-title.meta.js",
+		"downloadURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-full-title.user.js"
 	}
 }

@@ -1,7 +1,7 @@
 "use strict";
 
 function hasStylesheet(id) {
-	return document.getElementById(id);
+	return !!document.getElementById(id);
 }
 
 function addStylesheet(source, id) {
