@@ -1,10 +1,14 @@
 // ==UserScript==
 // @name        x/full-title
-// @version     1.0.0
+// @version     1.1.0
 // @author      dnsev-h
 // @namespace   dnsev-h
 // @description Show the full title of galleries on mouse hover
 // @run-at      document-start
+// @grant       GM_getValue
+// @grant       GM.getValue
+// @grant       GM_setValue
+// @grant       GM.setValue
 // @include     http://exhentai.org/*
 // @include     https://exhentai.org/*
 // @include     http://e-hentai.org/*
