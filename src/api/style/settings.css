@@ -1,0 +1,13 @@
+.x-settings-container {
+	display: block;
+}
+.x-settings-container.x-settings-container-hidden {
+	display: none;
+}
+.x-settings-hidden {
+	display: none !important;
+}
+
+.x-settings-option select {
+	margin-right: 0.5em;
+}
