@@ -1,7 +1,15 @@
 "use strict";
 
+function getId(id) {
+	return `${id}-stylesheet`;
+}
+
+function getStylesheet(id) {
+	return document.getElementById(getId(id));
+}
+
 function hasStylesheet(id) {
-	return !!document.getElementById(id);
+	return !!getStylesheet(id);
 }
 
 function addStylesheet(source, id) {
@@ -10,7 +18,7 @@ function addStylesheet(source, id) {
 	const style = document.createElement("style");
 	style.textContent = source;
 	if (typeof(id) === "string") {
-		style.id = id;
+		style.id = getId(id);
 	}
 	document.head.appendChild(style);
 	return style;
@@ -19,5 +27,6 @@ function addStylesheet(source, id) {
 
 module.exports = {
 	hasStylesheet,
+	getStylesheet,
 	addStylesheet
 };
