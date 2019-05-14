@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        x/random
-// @version     1.0.0
+// @version     1.0.1
 // @author      dnsev-h
 // @namespace   dnsev-h
 // @description Go to a random page
