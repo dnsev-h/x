@@ -59,9 +59,7 @@ function testRoutes(routes) {
 
 	for (const route of routes) {
 		const match = route.match.exec(fragment);
-		if (match !== null) {
-			route.callback(match, fragment);
-		}
+		route.callback(match, fragment);
 	}
 }
 

@@ -136,6 +136,8 @@ function main() {
 	const currentPageType = pageType.get(document, location);
 
 	urlFragment.addRoute(/^\/random(\/[\w\W]*)?$/, (match) => {
+		if (match === null) { return; }
+
 		urlFragment.clear();
 
 		if (match[1] !== undefined) {
