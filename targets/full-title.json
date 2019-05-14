@@ -15,6 +15,12 @@
 		"namespace": "dnsev-h",
 		"description": "Show the full title of galleries on mouse hover",
 		"run-at": "document-start",
+		"grant": [
+			"GM_getValue",
+			"GM.getValue",
+			"GM_setValue",
+			"GM.setValue"
+		],
 		"include": [
 			"http://exhentai.org/*",
 			"https://exhentai.org/*",

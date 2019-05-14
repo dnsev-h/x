@@ -13,24 +13,43 @@
 	margin: 0;
 }
 
-.itg>.gl1t:hover>a:first-of-type {
+:root[data-x-option-full-title-display-mode=hover]
+.itg>.gl1t:hover>a:first-of-type,
+:root[data-x-option-full-title-display-mode=always]
+.itg>.gl1t>a:first-of-type {
 	overflow: visible;
 	z-index: 10;
 }
-.itg>.gl1t:hover>a:first-of-type>.glname {
+
+:root[data-x-option-full-title-display-mode=hover]
+.itg>.gl1t:hover>a:first-of-type>.glname,
+:root[data-x-option-full-title-display-mode=always]
+.itg>.gl1t>a:first-of-type>.glname {
 	padding-bottom: 0.25em;
 }
 
-.itg>.gl1t:hover:nth-child(2n+1)>a:first-of-type>.glname {
+:root[data-x-option-full-title-display-mode=hover]
+.itg>.gl1t:hover:nth-child(2n+1)>a:first-of-type>.glname,
+:root[data-x-option-full-title-display-mode=always]
+.itg>.gl1t:nth-child(2n+1)>a:first-of-type>.glname {
 	background-color: rgba(242, 240, 228, 0.75);
 }
-.itg>.gl1t:hover:nth-child(2n+2)>a:first-of-type>.glname {
+:root[data-x-option-full-title-display-mode=hover]
+.itg>.gl1t:hover:nth-child(2n+2)>a:first-of-type>.glname,
+:root[data-x-option-full-title-display-mode=always]
+.itg>.gl1t:nth-child(2n+2)>a:first-of-type>.glname {
 	background-color: rgba(237, 235, 223, 0.75);
 }
 
-:root.x-is-dark .itg>.gl1t:hover:nth-child(2n+1)>a:first-of-type>.glname {
+:root.x-is-dark[data-x-option-full-title-display-mode=hover]
+.itg>.gl1t:hover:nth-child(2n+1)>a:first-of-type>.glname,
+:root.x-is-dark[data-x-option-full-title-display-mode=always]
+.itg>.gl1t:nth-child(2n+1)>a:first-of-type>.glname {
 	background-color: rgba(54, 57, 64, 0.75);
 }
-:root.x-is-dark .itg>.gl1t:hover:nth-child(2n+2)>a:first-of-type>.glname {
+:root.x-is-dark[data-x-option-full-title-display-mode=hover]
+.itg>.gl1t:hover:nth-child(2n+2)>a:first-of-type>.glname,
+:root.x-is-dark[data-x-option-full-title-display-mode=always]
+.itg>.gl1t:nth-child(2n+2)>a:first-of-type>.glname {
 	background-color: rgba(60, 65, 75, 0.75);
 }
