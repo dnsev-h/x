@@ -1,11 +1,10 @@
 "use strict";
 
+let apiStyle = null;
+
+
 function getId(id) {
 	return `${id}-stylesheet`;
-}
-
-function isDark() {
-	return (window.location.hostname.indexOf("exhentai") >= 0);
 }
 
 function getStylesheet(id) {
@@ -17,7 +16,8 @@ function hasStylesheet(id) {
 }
 
 function addStylesheet(source, id) {
-	document.documentElement.classList.toggle("x-is-dark", isDark());
+	if (apiStyle === null) { apiStyle = require("./api/style"); }
+	apiStyle.setDocumentDarkFlag();
 
 	const style = document.createElement("style");
 	style.textContent = source;
@@ -30,7 +30,6 @@ function addStylesheet(source, id) {
 
 
 module.exports = {
-	isDark,
 	hasStylesheet,
 	getStylesheet,
 	addStylesheet
