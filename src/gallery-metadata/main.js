@@ -45,7 +45,7 @@ function onDownloadLinkClicked(e) {
 			e.stopPropagation();
 			return false;
 		}
-		link.setAttribute("href", downloadDataUrl);
+		this.setAttribute("href", downloadDataUrl);
 	}
 }
 
