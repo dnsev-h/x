@@ -4,6 +4,10 @@ function getId(id) {
 	return `${id}-stylesheet`;
 }
 
+function isDark() {
+	return (window.location.hostname.indexOf("exhentai") >= 0);
+}
+
 function getStylesheet(id) {
 	return document.getElementById(getId(id));
 }
@@ -13,7 +17,7 @@ function hasStylesheet(id) {
 }
 
 function addStylesheet(source, id) {
-	document.documentElement.classList.toggle("x-is-dark", window.location.hostname.indexOf("exhentai") >= 0);
+	document.documentElement.classList.toggle("x-is-dark", isDark());
 
 	const style = document.createElement("style");
 	style.textContent = source;
@@ -26,6 +30,7 @@ function addStylesheet(source, id) {
 
 
 module.exports = {
+	isDark,
 	hasStylesheet,
 	getStylesheet,
 	addStylesheet
