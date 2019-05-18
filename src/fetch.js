@@ -62,7 +62,7 @@ function requestXhrInternal(method, url, options) {
 	const overrideMimeType = options.overrideMimeType;
 
 	return new Promise((resolve, reject) => {
-		const xhr = XMLHttpRequest();
+		const xhr = new XMLHttpRequest();
 
 		xhr.timeout = timeout;
 		if (typeof(overrideMimeType) === "string") {
