@@ -1,0 +1,35 @@
+{
+	"files": [
+		{ "file": "../src/gallery-metadata/main.js" }
+	],
+	"options": {
+		"debug": true,
+		"bare": true
+	},
+	"target": "../builds/x-gallery-metadata.user.js",
+	"targetMeta": "../builds/x-gallery-metadata.meta.js",
+	"header": {
+		"name": "x/gallery-metadata",
+		"version": "1.0.0",
+		"author": "dnsev-h",
+		"namespace": "dnsev-h",
+		"description": "Download metadata JSON files for galleries",
+		"run-at": "document-start",
+		"include": [
+			"https://exhentai.org/*",
+			"https://e-hentai.org/*"
+		],
+		"icon": {
+			"value": "../images/icon-48.png",
+			"transform": "toDataUrl"
+		},
+		"icon64": {
+			"value": "../images/icon-64.png",
+			"transform": "toDataUrl"
+		},
+		"homepage": "https://dnsev-h.github.io/x/",
+		"supportURL": "https://github.com/dnsev-h/x/issues",
+		"updateURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-gallery-metadata.meta.js",
+		"downloadURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-gallery-metadata.user.js"
+	}
+}
