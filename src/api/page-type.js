@@ -1,32 +1,57 @@
 "use strict";
 
-function getPageType(doc, location) {
-	let n;
+const overrideAttributeName = "data-x-override-page-type";
+
+
+function setOverride(value) {
+	if (value) {
+		document.documentElement.setAttribute(overrideAttributeName, value);
+	} else {
+		document.documentElement.removeAttribute(overrideAttributeName);
+	}
+}
+
+function getOverride() {
+	const value = document.documentElement.getAttribute(overrideAttributeName);
+	return value ? value : null;
+}
+
+function get(doc, location) {
+	const overrideType = getOverride();
+	if (overrideType !== null) {
+		return overrideType;
+	}
 
 	if (doc.querySelector("#searchbox") !== null) {
 		return "search";
 	}
-	else if (doc.querySelector("input[name='favcat']") !== null) {
+	if (doc.querySelector("input[name=favcat]") !== null) {
 		return "favorites";
 	}
-	else if (doc.querySelector("#i1>h1") !== null) {
+	if (doc.querySelector("#i1>h1") !== null) {
 		return "image";
 	}
-	else if (doc.querySelector(".gm h1#gn") !== null) {
+	if (doc.querySelector(".gm h1#gn") !== null) {
 		return "gallery";
 	}
-	else if (doc.querySelector("#profile_outer") !== null) {
+	if (doc.querySelector("#profile_outer") !== null) {
 		return "settings";
 	}
-	else if (
-		(n = doc.querySelector("body>.d>p")) !== null &&
-		/gallery\s+has\s+been\s+removed/i.exec(n.textContent.trim()) !== null
-	) {
-		return "gallery_deleted";
+
+	let n = doc.querySelector("body>.d>p");
+	if (
+		(n !== null && /gallery\s+has\s+been\s+removed/i.test(n.textContent)) ||
+		doc.querySelector(".eze_dgallery_table") !== null) { // eze resurrection
+		return "deletedGallery";
 	}
-	else if ((n = doc.querySelector("img[src]")) !== null && location !== null) {
+
+	n = doc.querySelector("img[src]");
+	if (n !== null && location !== null) {
 		const p = location.pathname;
-		if (n.getAttribute("src") === location.href && p.substr(0, 3) !== "/t/" && p.substr(0, 5) !== "/img/") {
+		if (
+			n.getAttribute("src") === location.href &&
+			p.substr(0, 3) !== "/t/" &&
+			p.substr(0, 5) !== "/img/") {
 			return "panda";
 		}
 	}
@@ -37,5 +62,7 @@ function getPageType(doc, location) {
 
 
 module.exports = {
-	get: getPageType
+	get,
+	getOverride,
+	setOverride
 };
