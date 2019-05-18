@@ -21,6 +21,8 @@ function addLink() {
 
 	const navBar = require("./navigation-bar");
 	n = navBar.addLink("x", `/uconfig.php${urlFragment.create("settings")}`, 1);
+	if (n === null) { return null; }
+
 	n.id = id;
 	return n;
 }
