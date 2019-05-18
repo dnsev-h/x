@@ -8,3 +8,6 @@
 
 * [Gallery Metadata](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-gallery-metadata.user.js)<br>
   Download metadata JSON files for galleries.
+
+* [Gallery Resurrect](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-gallery-resurrect.user.js)<br>
+  Resurrect information about removed galleries.

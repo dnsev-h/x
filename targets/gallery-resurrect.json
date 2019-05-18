@@ -1,0 +1,43 @@
+{
+	"files": [
+		{ "file": "../src/gallery-resurrect/main.js" }
+	],
+	"options": {
+		"debug": true,
+		"bare": true
+	},
+	"target": "../builds/x-gallery-resurrect.user.js",
+	"targetMeta": "../builds/x-gallery-resurrect.meta.js",
+	"header": {
+		"name": "x/gallery-resurrect",
+		"version": "1.0.0",
+		"author": "dnsev-h",
+		"namespace": "dnsev-h",
+		"description": "Resurrect information about removed galleries",
+		"run-at": "document-start",
+		"grant": [
+			"GM_xmlhttpRequest",
+			"GM.xmlHttpRequest"
+		],
+		"connect": [
+			"exhentai.org",
+			"e-hentai.org"
+		],
+		"include": [
+			"https://exhentai.org/*",
+			"https://e-hentai.org/*"
+		],
+		"icon": {
+			"value": "../images/icon-48.png",
+			"transform": "toDataUrl"
+		},
+		"icon64": {
+			"value": "../images/icon-64.png",
+			"transform": "toDataUrl"
+		},
+		"homepage": "https://dnsev-h.github.io/x/",
+		"supportURL": "https://github.com/dnsev-h/x/issues",
+		"updateURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-gallery-resurrect.meta.js",
+		"downloadURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-gallery-resurrect.user.js"
+	}
+}

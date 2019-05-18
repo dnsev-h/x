@@ -1,0 +1,6 @@
+body>*:not(.x-resurrected) {
+	display: none !important;
+}
+#x-gallery-resurrect-category {
+	text-decoration: none;
+}
