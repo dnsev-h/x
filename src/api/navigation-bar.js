@@ -3,7 +3,7 @@
 
 function addLink(label, url, order) {
 	const n = document.getElementById("nb");
-	if (n === null) { return; }
+	if (n === null) { return null; }
 
 	const div = document.createElement("div");
 	const a = document.createElement("a");
