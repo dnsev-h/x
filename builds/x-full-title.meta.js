@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        x/full-title
-// @version     1.1.1
+// @version     1.1.2
 // @author      dnsev-h
 // @namespace   dnsev-h
 // @description Show the full title of galleries on mouse hover
