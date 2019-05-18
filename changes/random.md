@@ -1,5 +1,9 @@
 # x/random changelog
 
+## v1.0.3
+* Minor API updates
+  * Page type detection updated
+
 ## v1.0.2
 * Script no longer runs on non-HTTPS URLs
 * Minor API updates
