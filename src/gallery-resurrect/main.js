@@ -97,6 +97,8 @@ async function insertGalleryHtml(identifier) {
 }
 
 function setGalleryInfo(html, info) {
+	const urls = require("../api/urls");
+	const popups = require("../api/popups");
 	let n;
 
 	// Title
@@ -109,7 +111,7 @@ function setGalleryInfo(html, info) {
 	// Uploader
 	n = html.querySelector("#x-gallery-resurrect-uploader");
 	n.textContent = info.uploader;
-	n.setAttribute("href", `/uploader/${info.uploader}`);
+	n.setAttribute("href", urls.uploader(info.uploader));
 
 	// Category
 	n = html.querySelector("#x-gallery-resurrect-category");
@@ -117,7 +119,7 @@ function setGalleryInfo(html, info) {
 		const categoryInfo = categoryInfos[info.category];
 		n.textContent = categoryInfo.name;
 		n.classList.add(categoryInfo.class);
-		n.setAttribute("href", `/${categoryInfo.url}`);
+		n.setAttribute("href", urls.category(categoryInfo.url));
 	} else {
 		n.textContent = info.category;
 	}
@@ -146,20 +148,10 @@ function setGalleryInfo(html, info) {
 	}
 
 	// Favorites
-	const favoriteUrl = `/gallerypopups.php?gid=${info.identifier.id}&t=${info.identifier.token}&act=addfav`;
+	const favoriteUrl = urls.favoritesPopup(info.identifier.id, info.identifier.token);
 	const favoriteLinkSelector = "#x-gallery-resurrect-favorites-link";
 	document.querySelector(favoriteLinkSelector).setAttribute("href", favoriteUrl);
-	require("../javascript").inject((favoriteUrl) => {
-		document.querySelector("#gdf").addEventListener("click", (e) => {
-			e.preventDefault();
-			e.stopPropagation();
-			try {
-				return popUp(favoriteUrl, 675, 415);
-			} catch (e) {
-				return false;
-			}
-		}, false);
-	}, [ favoriteUrl ]);
+	popups.showOnClick("#gdf", favoriteUrl, popups.sizes.favorites);
 
 	// Download metadata
 	setupDownloadLink(info);
