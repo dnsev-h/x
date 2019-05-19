@@ -1,5 +1,9 @@
 # x/gallery-metadata changelog
 
+## v1.0.3
+* Minor API updates
+  * GalleryIdentifier separation
+
 ## v1.0.2
 * Fixed bug causing metadata download to not work
 
