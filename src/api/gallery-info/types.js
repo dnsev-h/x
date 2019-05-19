@@ -1,18 +1,6 @@
 "use strict";
 
-class GalleryIdentifier {
-	constructor(id, token) {
-		this.id = id;
-		this.token = token;
-	}
-
-	toCommonJson() {
-		return {
-			gid: this.id,
-			token: this.token
-		};
-	}
-}
+const GalleryIdentifier = require("../gallery-identifier").GalleryIdentifier;
 
 
 class GalleryInfo {
@@ -49,7 +37,9 @@ class GalleryInfo {
 
 	toCommonJson() {
 		return {
-			gallery: toCommonJsonOrDefault(this.identifier, null) || new GalleryIdentifier(0, "").toCommonJson(),
+			gallery: (
+				galleryIdentifiertoCommonJson(this.identifier, null) ||
+				galleryIdentifiertoCommonJson(new GalleryIdentifier(0, ""), null)),
 			title: toStringOrDefault(this.title, ""),
 			title_original: toStringOrDefault(this.titleOriginal, ""),
 			date_uploaded: toStringOrDefault(this.dateUploaded, ""),
@@ -64,7 +54,7 @@ class GalleryInfo {
 				category_title: (this.favoriteCategory !== null ? toStringOrDefault(this.favoriteCategory.title, "") : ""),
 				count: toNumberOrDefault(this.favoriteCount, 0)
 			},
-			parent: toCommonJsonOrDefault(this.parent, null),
+			parent: galleryIdentifiertoCommonJson(this.parent, null),
 			newer_versions: newerVersionsToCommonJson(this.newerVersions),
 			thumbnail: toStringOrDefault(this.mainThumbnailUrl, ""),
 			thumbnail_size: toStringOrDefault(this.thumbnailSize, ""),
@@ -96,10 +86,15 @@ function toNumberOrDefault(value, defaultValue) {
 	return Number.isNaN(value) ? defaultValue : value;
 }
 
-function toCommonJsonOrDefault(obj, defaultValue) {
-	return (obj && typeof(obj.toCommonJson) === "function") ?
-		obj.toCommonJson() :
-		defaultValue;
+function galleryIdentifiertoCommonJson(identifier, defaultValue) {
+	if (identifier === null || typeof(identifier) !== "object") {
+		return defaultValue;
+	}
+
+	return {
+		gid: identifier.id,
+		token: identifier.token
+	};
 }
 
 function newerVersionsToCommonJson(newerVersions) {
@@ -107,7 +102,9 @@ function newerVersionsToCommonJson(newerVersions) {
 	if (Array.isArray(newerVersions)) {
 		for (const newerVersion of newerVersions) {
 			result.push({
-				gallery: toCommonJsonOrDefault(newerVersion.identifier, null) || new GalleryIdentifier(0, "").toCommonJson(),
+				gallery: (
+					galleryIdentifiertoCommonJson(newerVersion.identifier, null) ||
+					galleryIdentifiertoCommonJson(new GalleryIdentifier(0, ""), null)),
 				name: toStringOrDefault(newerVersion.name),
 				date_uploaded: toNumberOrDefault(newerVersion.dateUploaded)
 			});
@@ -130,5 +127,5 @@ function tagsToCommonJson(tags) {
 
 module.exports = {
 	GalleryIdentifier,
-	GalleryInfo,
+	GalleryInfo
 };
