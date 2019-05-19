@@ -5,25 +5,20 @@ const types = require("./types");
 const sizeLabelToBytesPrefixes = [ "b", "kb", "mb", "gb" ];
 
 
-function getGalleryIdentifierAndPageFromUrl(url) {
-	const match = /^.*?\/\/.+?\/(.*?)(\?.*?)?(#.*?)?$/.exec(url);
-	if (match === null) { return null; }
-
-	const path = match[1].replace(/^\/+|\/+$/g, "").replace(/\/{2,}/g, "/").split("/");
-	if (path[0] !== "g" || path.length < 3) { return null; }
-
-	const identifier = new types.GalleryIdentifier(parseInt(path[1], 10), path[2]);
-	if (Number.isNaN(identifier.id)) { return null; }
-
-	let page = null;
-	if (match[2]) {
-		const match2 = /[\?\&]p=([\+\-]?\d+)/.exec(match[2]);
-		if (match2 !== null) {
-			page = parseInt(match2[1], 10);
-			if (Number.isNaN(page)) { page = null; }
-		}
+function getGalleryPageFromUrl(url) {
+	const match = /\?(?:(|[\w\W]*?&)p=([\+\-]?\d+))?/.exec(url);
+	if (match !== null && match[1]) {
+		const page = parseInt(match[1], 10);
+		if (!Number.isNaN(page)) { return page; }
 	}
+	return null;
+}
 
+function getGalleryIdentifierAndPageFromUrl(url) {
+	const identifier = types.GalleryIdentifier.createFromUrl(url);
+	if (identifier === null) { return null; }
+
+	const page = getGalleryPageFromUrl(url);
 	return { identifier, page };
 }
 
