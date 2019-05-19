@@ -1,0 +1,35 @@
+{
+	"files": [
+		{ "file": "../src/favorites/main.js" }
+	],
+	"options": {
+		"debug": true,
+		"bare": true
+	},
+	"target": "../builds/x-favorites.user.js",
+	"targetMeta": "../builds/x-favorites.meta.js",
+	"header": {
+		"name": "x/favorites",
+		"version": "1.0.0",
+		"author": "dnsev-h",
+		"namespace": "dnsev-h",
+		"description": "Improvements to adding favorites",
+		"run-at": "document-start",
+		"include": [
+			"https://exhentai.org/*",
+			"https://e-hentai.org/*"
+		],
+		"icon": {
+			"value": "../images/icon-48.png",
+			"transform": "toDataUrl"
+		},
+		"icon64": {
+			"value": "../images/icon-64.png",
+			"transform": "toDataUrl"
+		},
+		"homepage": "https://dnsev-h.github.io/x/",
+		"supportURL": "https://github.com/dnsev-h/x/issues",
+		"updateURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-favorites.meta.js",
+		"downloadURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-favorites.user.js"
+	}
+}

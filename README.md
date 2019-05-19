@@ -11,3 +11,6 @@
 
 * [Gallery Resurrect](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-gallery-resurrect.user.js)<br>
   Resurrect information about removed galleries.
+
+* [Favorites](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-favorites.user.js)<br>
+  Improvements to adding favorites.
