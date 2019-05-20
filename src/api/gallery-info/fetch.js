@@ -30,7 +30,8 @@ async function getGalleryInfo(identifiers) {
 
 	const data = {
 		method: "gdata",
-		gidlist: gidList
+		gidlist: gidList,
+		namespace: 1
 	};
 
 	const fetchResult = await fetch.post({
