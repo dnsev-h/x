@@ -1,5 +1,8 @@
 # x/gallery-metadata changelog
 
+## v1.1.2
+* Fix torrent file extension not removed properly
+
 ## v1.1.1
 * Add check to ensure the correct metadata is used
 

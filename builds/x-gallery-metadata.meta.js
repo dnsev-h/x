@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        x/gallery-metadata
-// @version     1.1.1
+// @version     1.1.2
 // @author      dnsev-h
 // @namespace   dnsev-h
 // @description Download metadata JSON files for galleries
