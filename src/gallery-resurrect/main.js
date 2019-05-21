@@ -134,17 +134,45 @@ function setGalleryInfo(html, info) {
 	html.querySelector("#x-gallery-resurrect-visible").textContent = (info.visible ? "Yes" : "No");
 	html.querySelector("#x-gallery-resurrect-file-size").textContent = getPrettyFileSize(info.approximateTotalFileSize);
 	html.querySelector("#x-gallery-resurrect-file-count").textContent = plural(info.fileCount, " file", " files");
+	if (typeof(info.language) === "string") {
+		const suffix = info.translated ? ` \xa0` : ""; // &nbsp;
+		n = html.querySelector("#x-gallery-resurrect-language");
+		n.textContent = `${info.language}${suffix}`;
+		if (info.translated) {
+			const span = document.createElement("span");
+			span.className = "halp";
+			span.title = "This gallery has been translated from the original language text.";
+			span.textContent = "TR";
+			n.appendChild(span);
+		}
+	} else {
+		html.querySelector("#x-gallery-resurrect-language-row").style.display = "none";
+	}
 
 	// Tags
-	const tagContainer = html.querySelector("#x-gallery-resurrect-tags");
-	for (const tag of info.tags.undefined) {
-		const div = document.createElement("div");
-		div.className = "gt";
-		const a = document.createElement("a");
-		a.href = `/tag/${tag}`;
-		a.textContent = tag;
-		div.appendChild(a);
-		tagContainer.appendChild(div);
+	const tagTable = html.querySelector("#x-gallery-resurrect-tags");
+	for (const namespace in info.tags) {
+		const row = document.createElement("tr");
+
+		let td = document.createElement("td");
+		td.className = "tc";
+		td.textContent = `${namespace}:`;
+		row.appendChild(td);
+
+		td = document.createElement("td");
+		row.appendChild(td);
+
+		for (const tag of info.tags[namespace]) {
+			const div = document.createElement("div");
+			div.className = "gt";
+			const a = document.createElement("a");
+			a.href = `/tag/${tag}`;
+			a.textContent = tag;
+			div.appendChild(a);
+			td.appendChild(div);
+		}
+
+		tagTable.appendChild(row);
 	}
 
 	// Favorites
