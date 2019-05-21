@@ -103,7 +103,7 @@ function createTorrentPageDownloadLinks(url) {
 
 		const text = torrentLink.textContent;
 		const whitespace = /^\s*/.exec(text)[0];
-		const torrentFileName = text.trim().replace(/\.[^\.]*/, "");
+		const torrentFileName = text.trim().replace(/\.[^\.]*$/, "");
 
 		const row = document.createElement("tr");
 
