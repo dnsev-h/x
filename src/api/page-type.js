@@ -37,6 +37,9 @@ function get(doc, location) {
 	if (doc.querySelector("#profile_outer") !== null) {
 		return "settings";
 	}
+	if (doc.querySelector("#torrentinfo") !== null) {
+		return "torrentInfo";
+	}
 
 	let n = doc.querySelector("body>.d>p");
 	if (
