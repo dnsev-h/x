@@ -1,5 +1,8 @@
 # x/gallery-metadata changelog
 
+## v1.1.1
+* Add check to ensure the correct metadata is used
+
 ## v1.1.0
 * Add named metadata JSON download links to torrents page
 
