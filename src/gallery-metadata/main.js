@@ -2,7 +2,7 @@
 
 const ready = require("../ready");
 const pageType = require("../api/page-type");
-const windowMessage = require("../windowMessage");
+const windowMessage = require("../window-message");
 const getFromHtml = require("../api/gallery-info/get-from-html");
 
 let downloadDataUrl = null;
