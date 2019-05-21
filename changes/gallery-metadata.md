@@ -1,5 +1,8 @@
 # x/gallery-metadata changelog
 
+## v1.1.0
+* Add named metadata JSON download links to torrents page
+
 ## v1.0.3
 * Minor API updates
   * GalleryIdentifier separation
