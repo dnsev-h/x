@@ -34,6 +34,7 @@ async function getGalleryInfo(identifiers) {
 		namespace: 1
 	};
 
+	const sourceUrl = window.location.href;
 	const fetchResult = await fetch.post({
 		gm: true,
 		url: "/api.php",
@@ -47,7 +48,7 @@ async function getGalleryInfo(identifiers) {
 		if (json.error) {
 			results.push(null);
 		} else {
-			const info = getFromJson(json);
+			const info = getFromJson(json, sourceUrl);
 			results.push(info);
 		}
 	}

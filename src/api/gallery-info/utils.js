@@ -28,8 +28,22 @@ function getBytesSizeFromLabel(number, label) {
 	return Math.floor(parseFloat(number) * Math.pow(1024, i));
 };
 
+function getSourceSiteFromUrl(url) {
+	const pattern = /^(?:(?:[a-z][a-z0-9\+\-\.]*:\/*|\/{2,})([^\/]*))?(\/?[\w\W]*)$/i;
+	const match = pattern.exec(url);
+
+	if (match !== null && match[1]) {
+		const host = match[1].toLowerCase();
+		if (host.indexOf("exhentai") >= 0) { return "exhentai"; }
+		if (host.indexOf("e-hentai") >= 0) { return "e-hentai"; }
+	}
+
+	return null;
+}
+
 
 module.exports = {
 	getGalleryIdentifierAndPageFromUrl,
-	getBytesSizeFromLabel
+	getBytesSizeFromLabel,
+	getSourceSiteFromUrl
 };

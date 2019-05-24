@@ -364,7 +364,7 @@ function populateGalleryInfoFromHtml(info, html) {
 	info.tagsHaveNamespace = true;
 }
 
-function getFromHtml(html) {
+function getFromHtml(html, url) {
 	const link = html.querySelector(".ptt td.ptds>a[href],.ptt td.ptdd>a[href]");
 	if (link === null) { return null; }
 
@@ -375,7 +375,8 @@ function getFromHtml(html) {
 	info.identifier = idPage.identifier;
 	info.currentPage = idPage.page;
 	info.source = "html";
-	populateGalleryInfoFromHtml(info,html);
+	populateGalleryInfoFromHtml(info, html);
+	info.sourceSite = utils.getSourceSiteFromUrl(url);
 	info.dateGenerated = Date.now();
 	return info;
 }

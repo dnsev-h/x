@@ -1,6 +1,7 @@
 "use strict";
 
 const types = require("./types");
+const utils = require("./utils");
 
 const defaultNamespace = "misc";
 
@@ -97,7 +98,7 @@ function populateGalleryInfoFromJson(info, json) {
 	}
 }
 
-function getFromJson(json) {
+function getFromJson(json, url) {
 	if (json === null || typeof(json) !== "object") { return null; }
 
 	const id = getJsonNumber(json.gid);
@@ -109,6 +110,7 @@ function getFromJson(json) {
 	info.currentPage = null;
 	info.source = "json";
 	populateGalleryInfoFromJson(info, json);
+	info.sourceSite = utils.getSourceSiteFromUrl(url);
 	info.dateGenerated = Date.now();
 	return info;
 }
