@@ -6,6 +6,7 @@ const windowMessage = require("../window-message");
 const getFromHtml = require("../api/gallery-info/get-from-html");
 const queryString = require("../query-string");
 const GalleryIdentifier = require("../api/gallery-identifier").GalleryIdentifier;
+const toCommonJson = require("../api/gallery-info/common-json").toCommonJson;
 
 let downloadDataUrl = null;
 
@@ -14,9 +15,9 @@ function setupGalleryPage() {
 	createGalleryPageDownloadLink();
 
 	windowMessage.registerCommand("galleryInfoRequest", (e) => {
-		const data = getFromHtml(document);
+		const data = getFromHtml(document, window.location.href);
 		if (data === null) { return; }
-		windowMessage.post(e.source, "galleryInfoResponse", data.toCommonJson());
+		windowMessage.post(e.source, "galleryInfoResponse", toCommonJson(data));
 	});
 }
 
@@ -34,7 +35,7 @@ function createGalleryPageDownloadLink() {
 
 function getGalleryInfo() {
 	try {
-		return getFromHtml(document);
+		return getFromHtml(document, window.location.href);
 	} catch (e) {
 		console.error(e);
 		return null;
@@ -57,7 +58,7 @@ function onDownloadLinkClicked(e) {
 			return false;
 		}
 
-		downloadDataUrl = createDownloadDataUrl(info.toCommonJson());
+		downloadDataUrl = createDownloadDataUrl(toCommonJson(info));
 		this.setAttribute("href", downloadDataUrl);
 	}
 }

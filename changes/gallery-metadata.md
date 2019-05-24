@@ -1,5 +1,9 @@
 # x/gallery-metadata changelog
 
+## v1.2.0
+* Export eze-compatible JSON format
+* Fixed upload date being exported incorrectly
+
 ## v1.1.2
 * Fix torrent file extension not removed properly
 
