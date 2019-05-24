@@ -3,6 +3,7 @@
 const ready = require("../ready");
 const style = require("../style");
 const pageType = require("../api/page-type");
+const toCommonJson = require("../api/gallery-info/common-json").toCommonJson;
 
 const reJavascriptGotoNext = /setTimeout\s*\(\s*(gotonext|"gotonext\(\)")\s*,\s*\d+\s*\)/;
 const fileSizeLabels = [ "B", "KB", "MB", "GB" ];
@@ -231,7 +232,7 @@ function setupDownloadLink(info) {
 function createDownloadDataUrl(info) {
 	if (info === null) { return null; }
 
-	const infoString = JSON.stringify(info.toCommonJson(), null, "  ");
+	const infoString = JSON.stringify(toCommonJson(info), null, "  ");
 	const blob = new Blob([ infoString ], { type: "application/json" });
 	return URL.createObjectURL(blob);
 }
