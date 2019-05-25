@@ -292,6 +292,8 @@ function bindInput(config, container, settingName, options) {
 
 
 function main() {
+	settings.addLink();
+
 	currentPageType = pageType.get(document, location);
 	switch (currentPageType) {
 		case "gallery":
