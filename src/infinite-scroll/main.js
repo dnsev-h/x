@@ -33,6 +33,18 @@ class InfiniteScroll extends InfiniteScrollBase {
 	}
 
 
+	getPageMode(pageType) {
+		switch (pageType) {
+			case "gallery":
+				return "image-list";
+			case "search":
+			case "favorites":
+				return "gallery-list";
+			default:
+				return null;
+		}
+	}
+
 	initializeContentContainer() {
 		this.contentContainer = this.createContentContainer();
 		this.pageNode.parentNode.insertBefore(this.contentContainer, this.pageNode);
@@ -45,6 +57,11 @@ class InfiniteScroll extends InfiniteScrollBase {
 		const html = require("./container.html");
 		const doc = new DOMParser().parseFromString(html, "text/html");
 		const container = doc.querySelector(".x-infinite-scroll-container");
+
+		const mode = this.getPageMode(this.pageType);
+		if (mode !== null) {
+			container.setAttribute("data-x-infinite-scroll-mode", mode);
+		}
 
 		const top = container.querySelector(".x-infinite-scroll-header-top-link");
 		top.addEventListener("click", (e) => {
@@ -103,11 +120,16 @@ class InfiniteScroll extends InfiniteScrollBase {
 	}
 
 	getPageDataFromHtml(html) {
-		const content = html.querySelector("#gdt");
+		const content = getDefaultPageContent(html, this.pageType); // html.querySelector("#gdt");
 		if (content === null) { return null; }
 
 		content.removeAttribute("id");
-		content.setAttribute("class", "x-infinite-scroll");
+
+		let className = content.getAttribute("class") || "";
+		if (className) { className += " "; }
+		className += "x-infinite-scroll";
+		content.setAttribute("class", className);
+
 		return { content };
 	}
 
@@ -192,7 +214,7 @@ function setupPageFocus() {
 
 function isWindowVisible() {
 	return (
-		typeof(document.visibilityState) !== "string" ||
+		typeof (document.visibilityState) !== "string" ||
 		document.visibilityState === "visible");
 }
 
@@ -203,13 +225,18 @@ function onVisibilityStateChanged() {
 }
 
 
-function getDefaultPageContent(pageType) {
+function getDefaultPageContent(html, pageType) {
 	let n;
 	switch (pageType) {
 		case "gallery":
-			n = document.querySelector("#gdt");
+			n = html.querySelector("#gdt");
 			if (n !== null) { return n; }
-			n = document.querySelector(".eze_gallery_page_container");
+			n = html.querySelector(".eze_gallery_page_container");
+			if (n !== null) { return n; }
+			break;
+		case "search":
+		case "favorites":
+			n = html.querySelector(".itg");
 			if (n !== null) { return n; }
 			break;
 	}
@@ -219,8 +246,25 @@ function getDefaultPageContent(pageType) {
 
 function isEnabledByDefault(pageType, config) {
 	switch (pageType) {
-		case "gallery": return config.enabledByDefaultForGalleryImages;
-		default: return false;
+		case "gallery":
+			return config.enabledByDefaultForGalleryImages;
+		case "search":
+		case "favorites":
+			return config.enabledByDefaultForGalleryLists;
+		default:
+			return false;
+	}
+}
+
+function isAllowed(pageType, config) {
+	switch (pageType) {
+		case "gallery":
+			return config.allowForGalleryImages;
+		case "search":
+		case "favorites":
+			return config.allowForGalleryLists;
+		default:
+			return false;
 	}
 }
 
@@ -238,10 +282,12 @@ async function initialize(pageType) {
 	const pagesInfo = pagination.getInfo(document);
 	if (pagesInfo === null) { return; }
 
-	const pageNode = getDefaultPageContent(pageType);
+	const pageNode = getDefaultPageContent(document, pageType);
 	if (pageNode === null) { return; }
 
 	const config = await require("./config").get();
+
+	if (!isAllowed(pageType, config)) { return; }
 
 	insertStylesheet();
 
@@ -265,6 +311,9 @@ async function setupSettings(container) {
 
 	container.innerHTML = require("./settings.html");
 	bindInput(config, container, "enabledByDefaultForGalleryImages", "boolean");
+	bindInput(config, container, "enabledByDefaultForGalleryLists", "boolean");
+	bindInput(config, container, "allowForGalleryImages", "boolean");
+	bindInput(config, container, "allowForGalleryLists", "boolean");
 	bindInput(config, container, "delay", {
 		type: "number",
 		min: 0
@@ -297,6 +346,8 @@ function main() {
 	currentPageType = pageType.get(document, location);
 	switch (currentPageType) {
 		case "gallery":
+		case "search":
+		case "favorites":
 			setupPageFocus();
 			break;
 		case "settings":
