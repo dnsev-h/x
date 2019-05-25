@@ -1,5 +1,9 @@
 # x/full-title changelog
 
+## v1.1.4
+* Minor API updates
+  * Settings page style updates
+
 ## v1.1.3
 * Minor API updates
   * Settings page style updates
