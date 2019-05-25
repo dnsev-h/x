@@ -15,5 +15,5 @@
 * [Favorites](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-favorites.user.js)<br>
   Improvements to adding favorites.
 
-* [Favorites](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-infinite-scroll.user.js)<br>
+* [Infinite Scroll](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-infinite-scroll.user.js)<br>
   Infinite scrolling for gallery images.
