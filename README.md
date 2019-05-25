@@ -16,4 +16,4 @@
   Improvements to adding favorites.
 
 * [Infinite Scroll](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-infinite-scroll.user.js)<br>
-  Infinite scrolling for gallery images.
+  Infinite scrolling for gallery lists and images.

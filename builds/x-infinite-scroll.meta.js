@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name        x/infinite-scroll
-// @version     1.0.1
+// @version     1.1.0
 // @author      dnsev-h
 // @namespace   dnsev-h
-// @description Infinite scrolling for gallery images
+// @description Infinite scrolling for gallery lists and images
 // @run-at      document-start
 // @grant       GM_getValue
 // @grant       GM.getValue
