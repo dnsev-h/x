@@ -1,17 +1,32 @@
 "use strict";
 
+const queryString = require("../query-string");
 
 const rePageList = /([0-9,]+)\s*-\s*([0-9,]+)\s*of\s*([0-9,]+)/i;
 const reResults = /([0-9,]+)\s*results?/i;
 
 
 class PageinationInfo {
-	constructor(pageCurrent, pageCount, itemCount, itemsOnPage, itemsPerPage) {
+	constructor(pageCurrent, pageCount, itemCount, itemsOnPage, itemsPerPage, urlBase, pageFieldName) {
 		this.pageCurrent = pageCurrent;
 		this.pageCount = pageCount;
 		this.itemCount = itemCount;
 		this.itemsOnPage = itemsOnPage;
 		this.itemsPerPage = itemsPerPage;
+		this.urlBase = urlBase;
+		this.pageFieldName = pageFieldName;
+	}
+
+	createPageUrl(pageIndex) {
+		if (this.urlBase === null) { return null; }
+
+		return this.urlBase.replace(/^([^#\?]*)(\?[^#]*)?(#[\w\W]*)?$/, (m0, m1, m2, m3) => {
+			m2 = (
+				pageIndex !== 0 ?
+				(m2 ? `${m2}&${this.pageFieldName}=${pageIndex}` : `?${this.pageFieldName}=${pageIndex}`) :
+				(m2 || ""));
+			return `${m1}${m2}${m3 || ""}`;
+		});
 	}
 }
 
@@ -28,7 +43,7 @@ function getPagesForImage(html) {
 
 	const pageCurrent = parseNumber(nodes[0].textContent, 1) - 1;
 	const pageCount = parseNumber(nodes[1].textContent, 0);
-	return new PageinationInfo(pageCurrent, pageCount, pageCount, 1, 1);
+	return new PageinationInfo(pageCurrent, pageCount, pageCount, 1, 1, null, null);
 }
 
 function calculateItemsPerPage(pageCurrent, pageCount, itemCount, itemsOnPage) {
@@ -101,14 +116,39 @@ function getPagesForGalleryList(html, pageList) {
 	let itemsPerPage = 0;
 
 	let v = getItemsForGalleryImages(pageList, pageCurrent, pageCount);
-	if (v === null) {
+	let pageFieldName = null;
+	let isGalleryList = false;
+	if (v !== null) {
+		pageFieldName = "p";
+	} else {
 		v = getItemsForGalleryList(html, pageCurrent, pageCount);
+		if (v !== null) {
+			pageFieldName = "page";
+			isGalleryList = true;
+		}
 	}
 	if (v !== null) {
 		({itemCount, itemsOnPage, itemsPerPage} = v);
 	}
 
-	return new PageinationInfo(pageCurrent, pageCount, itemCount, itemsOnPage, itemsPerPage);
+	// Url format
+	const link = node.querySelector("a[href]");
+	let urlBase = null;
+	if (link !== null && pageFieldName !== null) {
+		urlBase = link.getAttribute("href");
+		urlBase = queryString.removeQueryParameter(urlBase, pageFieldName);
+		if (isGalleryList) {
+			urlBase = queryString.removeQueryParameter(urlBase, "from");
+		}
+	}
+
+	return new PageinationInfo(pageCurrent, pageCount, itemCount, itemsOnPage, itemsPerPage, urlBase, pageFieldName);
+}
+
+function removeUrlQueryStringField(url, field) {
+	return url.replace(
+		new RegExp(`([&\\?])${field}(?:(?:=[^&]*)?(&|$))`),
+		(m0, m1, m2) => (m1 === "?" && m2 ? "?" : m2));
 }
 
 
