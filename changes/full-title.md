@@ -1,5 +1,10 @@
 # x/full-title changelog
 
+## v1.1.3
+* Minor API updates
+  * Settings page style updates
+  * Pagination updates
+
 ## v1.1.2
 * Minor API updates
   * Page type detection updated
