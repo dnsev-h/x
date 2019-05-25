@@ -76,7 +76,7 @@ function addSection(header, id, order) {
 	if (section === null) {
 		section = document.createElement("div");
 		section.id = fullId;
-		section.className = "x-settings-section";
+		section.className = "x-settings-section-container";
 		if (typeof(order) === "number") {
 			section.style.order = `${order}`;
 		}
