@@ -31,7 +31,7 @@
 .x-settings-section-header {
 	font-size: 1.25em;
 	line-height: 1.5em;
-	margin: 0.25em 0
+	margin: 0.25em 0;
 }
 
 .x-settings-section {
@@ -42,32 +42,32 @@
 	align-content: flex-start;
 	flex-wrap: nowrap;
 	width: 100%;
-	padding: 0.5em 0
+	padding: 0.5em 0;
 }
 .x-settings-section+.x-settings-section {
-	border-top: 1px solid rgba(0, 0, 0, 0.25)
+	border-top: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 :root:not(.x-is-dark) .x-settings-section+.x-settings-section {
-	border-top-color: rgba(92, 13, 18, 0.25)
+	border-top-color: rgba(92, 13, 18, 0.25);
 }
 
 .x-settings-section-left {
 	flex: 1 1 auto;
-	padding-right: 0.5em
+	padding-right: 0.5em;
 }
 .x-settings-section-right {
 	flex: 0 0 auto;
 	min-width: 30%;
-	text-align: right
+	text-align: right;
 }
 
 .x-settings-section-title {
 	font-weight: 700;
-	line-height: 1.5em
+	line-height: 1.5em;
 }
 .x-settings-section-description {
-	line-height: 1.35em
+	line-height: 1.35em;
 }
 
 
@@ -78,66 +78,77 @@ input.x-settings-section-input[type=text] {
 	margin: 0;
 	padding: 0.25em 0.5em;
 	line-height: 1.375em;
-	background-color: #43464e
+	background-color: #43464e;
 }
 :root:not(.x-is-dark) input.x-settings-section-input[type=number],
 :root:not(.x-is-dark) input.x-settings-section-input[type=text] {
-	background-color: #e3e0d1
+	background-color: #e3e0d1;
 }
 input.x-settings-section-input[type=text] {
-	width: 20em
+	width: 20em;
 }
 input.x-settings-section-input[type=number] {
 	width: 5em;
-	-moz-appearance: textfield
+	-moz-appearance: textfield;
 }
 input.x-settings-section-input[type=number]::-webkit-inner-spin-button,
 input.x-settings-section-input[type=number]::-webkit-outer-spin-button {
 	-webkit-appearance: none;
-	margin: 0
+	margin: 0;
 }
 
 
 .x-settings-input-table-container .lc {
 	display: inline-block;
-	margin-right: -6px
+	margin-right: -6px;
 }
 
 
 .x-settings-container code {
 	font-family: 'Courier New', Courier, monospace;
 	background-color: #43464e;
-	font-weight: 700
+	font-weight: 700;
 }
 :root:not(.x-is-dark) .x-settings-container code {
-	background-color: #e3e0d1
+	background-color: #e3e0d1;
 }
 
 
 .x-settings-light-text {
 	font-weight: 400;
-	opacity: 0.75
+	opacity: 0.75;
 }
 
 
 .x-settings-input-table-container {
 	display: inline-block;
-	text-align: left
+	text-align: left;
 }
 .x-settings-input-table {
-	display: table
+	display: table;
 }
 .x-settings-input-row {
-	display: table-row
+	display: table-row;
 }
 .x-settings-input-row.x-settings-input-header-row {
 	font-size: 0.8em;
 	line-height: 1em;
-	opacity: 0.75
+	opacity: 0.75;
 }
 .x-settings-input-cell {
-	display: table-cell
+	display: table-cell;
 }
 .x-settings-input-cell+.x-settings-input-cell {
-	padding-left: 0.25em
+	padding-left: 0.25em;
+}
+
+
+.x-settings-input-label {
+	cursor: pointer;
+	margin: 0 0 0 1em;
+}
+.x-settings-input-checkbox-prefix {
+	vertical-align: middle;
+	display: inline-block;
+	padding-right: 0.5em;
 }
