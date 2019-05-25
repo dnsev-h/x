@@ -18,14 +18,14 @@ async function initializeSettings() {
 
 async function setupSettings(container) {
 	container.innerHTML = require("./settings.html");
-	bindInput(container, "displayMode");
+	bindInput(container, "displayMode", "string");
 }
 
-function bindInput(container, settingName) {
+function bindInput(container, settingName, options) {
 	const n = container.querySelector(`[data-x-settings-for=${settingName}]`);
 	if (n === null) { return null; }
 
-	config.bindInput(container.querySelector(`[data-x-settings-for=${settingName}]`), settingName);
+	config.bindInput(container.querySelector(`[data-x-settings-for=${settingName}]`), settingName, options);
 }
 
 async function initializeMode() {
