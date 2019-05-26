@@ -17,3 +17,6 @@
 
 * [Infinite Scroll](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-infinite-scroll.user.js)<br>
   Infinite scrolling for gallery lists and images.
+
+* [Gallery Info Copy](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-gallery-info-copy.user.js)<br>
+  Adds buttons to quickly copy certain info about galleries.

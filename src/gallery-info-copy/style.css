@@ -1,0 +1,30 @@
+.x-full-title-copy-link-container {
+	display: inline-block;
+	position: relative;
+}
+
+.x-full-title-copy-link {
+	margin-left: 0.5em;
+	display: inline-block;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.x-full-title-copy-link:after {
+	content: "Copy";
+}
+.x-full-title-copy-link:not(:hover) {
+	color: inherit;
+}
+
+.x-full-title-copy-node .x-full-title-copy-link {
+	opacity: 0;
+	transition: opacity 0.25s linear 0s;
+}
+.x-full-title-copy-node:hover .x-full-title-copy-link {
+	opacity: 0.99;
+	transition: opacity 0.25s linear 0.5s;
+}
+.x-full-title-copy-node:hover .x-full-title-copy-link:hover {
+	opacity: 1;
+	transition: opacity 0.25s linear 0s;
+}
