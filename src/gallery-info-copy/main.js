@@ -152,7 +152,7 @@ function nodeListContains(nodeList, node) {
 async function initializeSettings() {
 	settings.initialize();
 
-	const section = settings.addSection("Gallery Title-Copy", "gallery-info-copy", 2);
+	const section = settings.addSection("Gallery Info Copy", "gallery-info-copy", 2);
 	if (section !== null) {
 		await setupSettings(section);
 	}

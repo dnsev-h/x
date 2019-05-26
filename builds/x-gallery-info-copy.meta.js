@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        x/gallery-info-copy
-// @version     1.0.0
+// @version     1.0.1
 // @author      dnsev-h
 // @namespace   dnsev-h
 // @description Adds buttons to quickly copy certain info about galleries
