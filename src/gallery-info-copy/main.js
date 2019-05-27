@@ -26,6 +26,8 @@ class CopyLink {
 		this.node.appendChild(this.span);
 		this.node.classList.add(CopyLink.nodeClass);
 
+		this.updateVisibility();
+
 		this.link.addEventListener("click", (e) => this.onLinkClicked(e), false);
 
 		this.mutationObserver = new MutationObserver((records) => this.onNodeMutation(records));
@@ -62,12 +64,15 @@ class CopyLink {
 			} else {
 				this.span.classList.add(CopyLink.removedClass);
 				this.mutationObserver.disconnect();
+				return;
 			}
 		}
+
+		this.updateVisibility();
 	}
 
 	onLinkClicked(e) {
-		const text = this.transformText(this.node.textContent);
+		const text = this.transformText(this.node.textContent.trim());
 		copy.toClipboard(text);
 
 		e.preventDefault();
@@ -77,6 +82,11 @@ class CopyLink {
 
 	transformText(text) {
 		return this.config.replaceRestrictedFileNameCharacters ? fileName.replaceRestrictedCharacters(text) : text;
+	}
+
+	updateVisibility() {
+		const text = this.node.textContent.trim();
+		this.span.classList.toggle("x-full-title-copy-link-container-hidden", text.length === 0);
 	}
 
 	static isSetup(node) {

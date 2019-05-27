@@ -2,6 +2,9 @@
 	display: inline-block;
 	position: relative;
 }
+.x-full-title-copy-link-container.x-full-title-copy-link-container-hidden {
+	display: none;
+}
 
 .x-full-title-copy-link {
 	margin-left: 0.5em;
