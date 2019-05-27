@@ -1,6 +1,7 @@
 "use strict";
 
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
 const browserify = require("browserify");
 const userscript = require("./userscript");
@@ -24,6 +25,7 @@ function build(target, date) {
 		date: formatDate(date)
 	};
 
+	const newline = os.EOL;
 	const output = typeof(json.target) === "string" ? path.resolve(directory, json.target) : null;
 	const outputMeta = typeof(json.targetMeta) === "string" ? path.resolve(directory, json.targetMeta) : null;
 
@@ -54,14 +56,15 @@ function build(target, date) {
 
 		if (outputMeta !== null) {
 			const s = fs.createWriteStream(outputMeta);
-			userscript.writeHeader(s, json.header, headerInfo);
+			userscript.writeHeader(s, json.header, headerInfo, newline);
 			s.end();
 		}
 
 		if (output !== null) {
+			const buf2 = Buffer.from(buf.toString("utf8").replace(/\r?\n|\r/g, newline), "utf8");
 			const s = fs.createWriteStream(output);
-			userscript.writeHeader(s, json.header, headerInfo);
-			s.write(buf);
+			userscript.writeHeader(s, json.header, headerInfo, newline);
+			s.write(buf2);
 			s.end();
 		}
 	});

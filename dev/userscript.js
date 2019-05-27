@@ -30,10 +30,10 @@ const transforms = {
 	toDataUrl,
 	info: getInfo
 };
-const newline = "\n";
+const defaultNewline = "\n";
 
 
-function writeHeaderValue(stream, key, value, keyLength, info) {
+function writeHeaderValue(stream, key, value, keyLength, info, newline) {
 	if (typeof(value) === "string") {
 		stream.write("// @");
 		stream.write(key.padEnd(keyLength, " "));
@@ -42,7 +42,7 @@ function writeHeaderValue(stream, key, value, keyLength, info) {
 	}
 	else if (typeof(value) === "function") {
 		let v = value(info);
-		writeHeaderValue(stream, key, v, keyLength, info);
+		writeHeaderValue(stream, key, v, keyLength, info, newline);
 	}
 	else if (typeof(value) === "boolean") {
 		if (value === true) {
@@ -54,7 +54,7 @@ function writeHeaderValue(stream, key, value, keyLength, info) {
 	else if (value !== null && typeof(value) === "object") {
 		if (Array.isArray(value)) {
 			for (let v of value) {
-				writeHeaderValue(stream, key, v, keyLength, info);
+				writeHeaderValue(stream, key, v, keyLength, info, newline);
 			}
 		}
 		else {
@@ -63,13 +63,15 @@ function writeHeaderValue(stream, key, value, keyLength, info) {
 			if (typeof(t) === "string" && Object.prototype.hasOwnProperty.call(transforms, t)) {
 				v = transforms[t](v, info);
 			}
-			writeHeaderValue(stream, key, v, keyLength, info);
+			writeHeaderValue(stream, key, v, keyLength, info, newline);
 		}
 	}
 }
 
 
-function writeHeader(stream, descriptor, info) {
+function writeHeader(stream, descriptor, info, newline) {
+	if (typeof(newline) !== "string") { newline = defaultNewline; }
+
 	let maxKeyLength = 0;
 	for (let k in descriptor) {
 		if (k.length > maxKeyLength) { maxKeyLength = k.length; }
@@ -80,7 +82,7 @@ function writeHeader(stream, descriptor, info) {
 	stream.write(newline);
 
 	for (let k in descriptor) {
-		writeHeaderValue(stream, k, descriptor[k], maxKeyLength, info);
+		writeHeaderValue(stream, k, descriptor[k], maxKeyLength, info, newline);
 	}
 
 	stream.write("// ==/UserScript==");
