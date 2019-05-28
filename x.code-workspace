@@ -6,7 +6,7 @@
 	],
 	"settings": {
 		"editor.tabSize": 2,
-    "editor.insertSpaces": false,
+		"editor.insertSpaces": false,
 		"files.trimTrailingWhitespace": true,
 		"files.exclude": {
 			"**/.git": true,
