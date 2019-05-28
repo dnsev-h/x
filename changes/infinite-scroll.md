@@ -1,5 +1,8 @@
 # x/infinite-scroll changelog
 
+## v1.1.1
+* Fixed popup gallery thumbnails appearing beneath the infinite scroll header
+
 ## v1.1.0
 * Added support for infinite-scroll on gallery list pages
 * Added ability to disallow infinite-scroll based on page type

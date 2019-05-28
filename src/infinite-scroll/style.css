@@ -156,3 +156,9 @@ a.eze_gallery_page_indicator {
 .eze_gallery_custom_table>.eze_gallery_custom_row>.eze_gallery_custom_cell:nth-child(1)>p:nth-child(1) {
 	display: none;
 }
+
+/* Fix list thumbnails appearing undear the scroll header */
+
+.x-infinite-scroll-container .glthumb {
+	z-index: 203;
+}
