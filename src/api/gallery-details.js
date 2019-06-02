@@ -56,18 +56,6 @@ class GalleryDetails {
 }
 
 
-function getComputedStyle(node, style) {
-	if (node === null) { return ""; }
-
-	try {
-		return window.getComputedStyle(node).getPropertyValue(style) || "";
-	}
-	catch (e) {}
-
-	return node.style.getPropertyValue(style) || "";
-}
-
-
 function findParentWithClass(node, className) {
 	if (node !== null) {
 		while ((node = node.parentNode) !== null) {

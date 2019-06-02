@@ -11,7 +11,7 @@ function toPromise(fn, self) {
 			}
 		});
 	};
-};
+}
 
 const gm = ((objects) => {
 	try {

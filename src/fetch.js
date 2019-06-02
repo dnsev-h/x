@@ -69,7 +69,8 @@ function requestXhrInternal(method, url, options) {
 			xhr.overrideMimeType(overrideMimeType);
 		}
 		if (headers !== null && typeof(headers) === "object") {
-			for (let k in headers) {
+			for (const k in headers) {
+				if (!Object.prototype.hasOwnProperty.call(headers, k)) { continue; }
 				xhr.setRequestHeader(k, headers[k]);
 			}
 		}

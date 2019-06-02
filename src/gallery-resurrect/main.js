@@ -153,6 +153,7 @@ function setGalleryInfo(html, info) {
 	// Tags
 	const tagTable = html.querySelector("#x-gallery-resurrect-tags");
 	for (const namespace in info.tags) {
+		if (!Object.prototype.hasOwnProperty.call(info.tags, namespace)) { continue; }
 		const row = document.createElement("tr");
 
 		let td = document.createElement("td");

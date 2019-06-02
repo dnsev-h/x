@@ -40,8 +40,9 @@ function newerVersionsToCommonJson(newerVersions) {
 
 function tagsToCommonJson(tags) {
 	const result = {};
-	if (tags !== null && typeof(tags) === "object") {
+	if (tags !== null && typeof(tags) === "object" && !Array.isArray(tags)) {
 		for (const namespace in tags) {
+			if (!Object.prototype.hasOwnProperty.call(tags, namespace)) { continue; }
 			const tagList = tags[namespace];
 			result[namespace] = [...tagList];
 		}

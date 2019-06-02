@@ -145,12 +145,6 @@ function getPagesForGalleryList(html, pageList) {
 	return new PageinationInfo(pageCurrent, pageCount, itemCount, itemsOnPage, itemsPerPage, urlBase, pageFieldName);
 }
 
-function removeUrlQueryStringField(url, field) {
-	return url.replace(
-		new RegExp(`([&\\?])${field}(?:(?:=[^&]*)?(&|$))`),
-		(m0, m1, m2) => (m1 === "?" && m2 ? "?" : m2));
-}
-
 
 function getInfo(html) {
 	if (!html) { html = document; }
