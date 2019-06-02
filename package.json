@@ -25,5 +25,27 @@
 	"bugs": {
 		"url": "https://github.com/dnsev-h/x/issues"
 	},
-	"homepage": "https://dnsev-h.github.io/x/"
+	"homepage": "https://dnsev-h.github.io/x/",
+	"jshintConfig": {
+		"browser": true,
+		"browserify": true,
+		"node": false,
+		"devel": true,
+		"esversion": "8",
+		"maxerr": 50,
+		"noarg": true,
+		"nocomma": true,
+		"nonbsp": true,
+		"eqeqeq": true,
+		"bitwise": true,
+		"leanswitch": true,
+		"strict": true,
+		"undef": true,
+		"curly": true,
+		"eqnull": false,
+		"forin" : true,
+		"varstmt" : false,
+		"unused": "vars",
+		"quotmark": "double"
+	}
 }

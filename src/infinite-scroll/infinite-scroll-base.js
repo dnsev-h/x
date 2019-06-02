@@ -36,6 +36,7 @@ class InfiniteScrollBase {
 
 
 function onScrollChanged(force) {
+	/* jshint -W040 */
 	const scrollYNew = getPageScrollY();
 	const scrollYPre = this._scrollY;
 	this._scrollY = scrollYNew;
@@ -58,6 +59,7 @@ function onScrollChanged(force) {
 
 	// Load
 	this.loadNextPage();
+	/* jshint +W040 */
 }
 
 function getWindowHeight() {

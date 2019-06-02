@@ -46,7 +46,7 @@ const gm = ((objects) => {
 		result[key] = promise;
 	}
 	return result;
-}).call(this, [this, window]);
+}).call(this, [this, window]); // jshint ignore:line
 
 
 module.exports = gm;

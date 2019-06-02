@@ -137,7 +137,7 @@ function getThumbnailSize(html) {
 
 function getThumbnailRows(html) {
 	const nodes = html.querySelectorAll("#gdo2>.nosel");
-	if (nodes.length == 0) { return null; }
+	if (nodes.length === 0) { return null; }
 
 	const pattern = /\s*([0-9]+)/;
 	for (const node of nodes) {
@@ -227,7 +227,7 @@ function getLanguageInfo(detailsNodes) {
 			}
 
 			const trNode = node.querySelector(".halp");
-			translated = (trNode !== null && trNode.textContent.trim().toLowerCase() == "tr");
+			translated = (trNode !== null && trNode.textContent.trim().toLowerCase() === "tr");
 		}
 	}
 

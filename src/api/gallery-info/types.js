@@ -15,7 +15,7 @@ class GalleryInfo {
 		this.ratingCount = null;
 		this.favoriteCategory = null;
 		this.favoriteCount = null;
-		this.mainThumbnailUrl = null
+		this.mainThumbnailUrl = null;
 		this.thumbnailSize = null;
 		this.thumbnailRows = null;
 		this.fileCount = null;

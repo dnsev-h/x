@@ -26,7 +26,7 @@ function getBytesSizeFromLabel(number, label) {
 	let i = sizeLabelToBytesPrefixes.indexOf(label.toLowerCase());
 	if (i < 0) { i = 0; }
 	return Math.floor(parseFloat(number) * Math.pow(1024, i));
-};
+}
 
 function getSourceSiteFromUrl(url) {
 	const pattern = /^(?:(?:[a-z][a-z0-9\+\-\.]*:\/*|\/{2,})([^\/]*))?(\/?[\w\W]*)$/i;

@@ -1,6 +1,8 @@
+
 "use strict";
 
 function showOnClick(selector, url, size) {
+	/* globals popUp */
 	let width = 675;
 	let height = 415;
 	if (size !== null && typeof(size) === "object") {
@@ -13,7 +15,7 @@ function showOnClick(selector, url, size) {
 			e.stopPropagation();
 			try {
 				return popUp(url, width, height);
-			} catch (e) {
+			} catch (err) {
 				return false;
 			}
 		}, false);

@@ -1,6 +1,6 @@
 "use strict";
 
-const fetch = require("../../fetch");
+const fetch = require("../../fetch"); // jshint ignore:line
 const getFromJson = require("./get-from-json");
 
 

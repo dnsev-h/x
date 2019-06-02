@@ -49,6 +49,7 @@ function createDownloadDataUrl(info) {
 }
 
 function onDownloadLinkClicked(e) {
+	/* jshint -W040 */
 	if (downloadDataUrl === null) {
 		const info = getGalleryInfo();
 		if (info === null) {
@@ -61,6 +62,7 @@ function onDownloadLinkClicked(e) {
 		downloadDataUrl = createDownloadDataUrl(toCommonJson(info));
 		this.setAttribute("href", downloadDataUrl);
 	}
+	/* jshint +W040 */
 }
 
 

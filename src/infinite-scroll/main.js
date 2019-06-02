@@ -1,7 +1,7 @@
 "use strict";
 
 const ready = require("../ready");
-const fetch = require("../fetch");
+const fetch = require("../fetch"); // jshint ignore:line
 const style = require("../style");
 const pageType = require("../api/page-type");
 const pagination = require("../api/pagination");
