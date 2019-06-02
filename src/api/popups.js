@@ -1,4 +1,3 @@
-
 "use strict";
 
 function showOnClick(selector, url, size) {
