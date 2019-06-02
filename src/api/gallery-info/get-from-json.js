@@ -2,16 +2,10 @@
 
 const types = require("./types");
 const utils = require("./utils");
+const htmlUtils = require("../../html-utils");
 
 const defaultNamespace = "misc";
 
-
-function getStringFromHtmlEscapedString(value) {
-	if (value === null) { return null; }
-
-  const doc = new DOMParser().parseFromString(value, "text/html");
-  return doc.documentElement.textContent;
-}
 
 function getJsonNumber(value) {
 	if (typeof(value) !== "number") {
@@ -40,8 +34,8 @@ function toProperCase(text) {
 }
 
 function populateGalleryInfoFromJson(info, json) {
-	info.title = getStringFromHtmlEscapedString(getJsonString(json.title));
-	info.titleOriginal = getStringFromHtmlEscapedString(getJsonString(json.title_jpn));
+	info.title = htmlUtils.getStringFromHtmlEscapedString(getJsonString(json.title));
+	info.titleOriginal = htmlUtils.getStringFromHtmlEscapedString(getJsonString(json.title_jpn));
 	info.mainThumbnailUrl = getJsonString(json.thumb);
 	const category = getJsonString(json.category);
 	info.category = (category !== null ? category.toLowerCase() : null);
