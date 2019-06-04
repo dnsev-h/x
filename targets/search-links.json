@@ -1,0 +1,41 @@
+{
+	"files": [
+		{ "file": "../src/search-links/main.js" }
+	],
+	"options": {
+		"debug": true,
+		"bare": true
+	},
+	"target": "../builds/x-search-links.user.js",
+	"targetMeta": "../builds/x-search-links.meta.js",
+	"header": {
+		"name": "x/search-links",
+		"version": "1.0.0",
+		"author": "dnsev-h",
+		"namespace": "dnsev-h",
+		"description": "Add customizable search links to gallery pages",
+		"run-at": "document-start",
+		"grant": [
+			"GM_getValue",
+			"GM.getValue",
+			"GM_setValue",
+			"GM.setValue"
+		],
+		"include": [
+			"https://exhentai.org/*",
+			"https://e-hentai.org/*"
+		],
+		"icon": {
+			"value": "../images/icon-48.png",
+			"transform": "toDataUrl"
+		},
+		"icon64": {
+			"value": "../images/icon-64.png",
+			"transform": "toDataUrl"
+		},
+		"homepage": "https://dnsev-h.github.io/x/",
+		"supportURL": "https://github.com/dnsev-h/x/issues",
+		"updateURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-search-links.meta.js",
+		"downloadURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-search-links.user.js"
+	}
+}

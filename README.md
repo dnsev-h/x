@@ -20,3 +20,6 @@
 
 * [Gallery Info Copy](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-gallery-info-copy.user.js)<br>
   Adds buttons to quickly copy certain info about galleries.
+
+* [Search Links](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-search-links.user.js)<br>
+  Add customizable search links to gallery pages.
