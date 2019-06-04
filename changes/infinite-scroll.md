@@ -1,5 +1,8 @@
 # x/infinite-scroll changelog
 
+## v1.1.2
+* Minor style changes to the settings page
+
 ## v1.1.1
 * Fixed popup gallery thumbnails appearing beneath the infinite scroll header
 
