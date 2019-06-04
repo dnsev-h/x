@@ -69,6 +69,9 @@
 .x-settings-section-description {
 	line-height: 1.35em;
 }
+.x-settings-section-description+.x-settings-section-description {
+	margin-top: 0.25em;
+}
 
 
 input.x-settings-section-input[type=number],
@@ -79,6 +82,7 @@ input.x-settings-section-input[type=text] {
 	padding: 0.25em 0.5em;
 	line-height: 1.375em;
 	background-color: #43464e;
+	box-sizing: border-box;
 }
 :root:not(.x-is-dark) input.x-settings-section-input[type=number],
 :root:not(.x-is-dark) input.x-settings-section-input[type=text] {
@@ -95,6 +99,26 @@ input.x-settings-section-input[type=number]::-webkit-inner-spin-button,
 input.x-settings-section-input[type=number]::-webkit-outer-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
+}
+
+
+textarea.x-settings-section-textarea {
+	border: none;
+	border-radius: 0;
+	margin: 0;
+	padding: 0.25em 0.5em;
+	line-height: 1.375em;
+	background-color: #43464e;
+	resize: vertical;
+	font-size: inherit;
+	width: 100%;
+	min-height: 1.875em;
+	height: 4.625em;
+	box-sizing: border-box;
+	font-family: "Courier New", Courier, monospace;
+}
+:root:not(.x-is-dark) textarea.x-settings-section-textarea {
+	background-color: #e3e0d1;
 }
 
 
@@ -141,7 +165,18 @@ input.x-settings-section-input[type=number]::-webkit-outer-spin-button {
 .x-settings-input-cell+.x-settings-input-cell {
 	padding-left: 0.25em;
 }
-
+.x-settings-input-row:not(.x-settings-input-header-row)+.x-settings-input-row>.x-settings-input-cell {
+	padding-top: 0.25em;
+}
+.x-settings-input-cell.x-settings-input-cell-middle {
+	vertical-align: middle;
+}
+.x-settings-input-cell.x-settings-input-cell-fill {
+	width: 100%;
+}
+.x-settings-input-cell.x-settings-input-cell-nowrap {
+	white-space: nowrap;
+}
 
 .x-settings-input-label {
 	cursor: pointer;
