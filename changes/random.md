@@ -1,5 +1,11 @@
 # x/random changelog
 
+## v1.0.4
+* Minor API updates
+  * Page type detection updated
+  * Pagination URL generation added
+  * JSHint cleanup
+
 ## v1.0.3
 * Minor API updates
   * Page type detection updated

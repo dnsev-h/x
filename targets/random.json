@@ -10,10 +10,11 @@
 	"targetMeta": "../builds/x-random.meta.js",
 	"header": {
 		"name": "x/random",
-		"version": "1.0.3",
+		"version": "1.0.4",
 		"author": "dnsev-h",
 		"namespace": "dnsev-h",
 		"description": "Go to a random page",
+		"run-at": "document-start",
 		"grant": [
 			"GM_xmlhttpRequest",
 			"GM.xmlHttpRequest"
@@ -22,7 +23,6 @@
 			"exhentai.org",
 			"e-hentai.org"
 		],
-		"run-at": "document-start",
 		"include": [
 			"https://exhentai.org/*",
 			"https://e-hentai.org/*"
