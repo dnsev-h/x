@@ -222,8 +222,8 @@ function getPrettyFileSize(bytes) {
 
 
 function setupDownloadLink(info) {
-	const galleryLinks = require("../api/gallery-links");
-	const link = galleryLinks.createRightSideLink("Metadata JSON").link;
+	const galleryRightSidebar = require("../api/gallery-right-sidebar");
+	const link = galleryRightSidebar.createLink("Metadata JSON", 0).link;
 	if (link === null) { return; }
 
 	link.setAttribute("download", "info.json");

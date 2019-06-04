@@ -1,0 +1,14 @@
+.x-gallery-links-right-sidebar-container {
+	margin-top: -25px;
+	padding-bottom: 0;
+	display: flex;
+	flex-direction: column;
+}
+.x-gallery-links-right-sidebar-entry {
+	margin-top: 25px;
+}
+
+div#gright.x-gallery-links-right-sidebar-contains-container {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
