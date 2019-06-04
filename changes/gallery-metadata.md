@@ -1,5 +1,9 @@
 # x/gallery-metadata changelog
 
+## v1.2.1
+* Minor API updates
+  * Improvements for the gallery right sidebar links
+
 ## v1.2.0
 * Export eze-compatible JSON format
 * Fixed upload date being exported incorrectly
