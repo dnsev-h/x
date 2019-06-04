@@ -1,0 +1,30 @@
+.x-popup-menu {
+	position: absolute;
+	font-size: 10pt;
+	border: 1px solid #000000;
+	background-color: #43464e;
+	display: flex;
+	flex-direction: column;
+	z-index: 210;
+	text-align: left;
+	box-shadow: 0.25em 0.25em 0 0 rgba(0, 0, 0, 0.5);
+}
+:root:not(.x-is-dark) .x-popup-menu {
+	border-color: #5c0d12;
+	background-color: #e3e0d1;
+	box-shadow: 0.25em 0.25em 0 0 rgba(92, 13, 18, 0.5);
+}
+.x-popup-menu.x-popup-menu-fixed {
+	position: fixed;
+}
+.x-popup-menu-option {
+	padding: 0.25em 1em;
+	line-height: 1.375em;
+	text-decoration: none;
+}
+.x-popup-menu-option:hover {
+	background-color: #34353b;
+}
+:root:not(.x-is-dark) .x-popup-menu-option:hover {
+	background-color: #edebdf;
+}
