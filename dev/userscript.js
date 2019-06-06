@@ -82,6 +82,7 @@ function writeHeader(stream, descriptor, info, newline) {
 	stream.write(newline);
 
 	for (let k in descriptor) {
+		if (!Object.prototype.hasOwnProperty.call(descriptor, k)) { continue; }
 		writeHeaderValue(stream, k, descriptor[k], maxKeyLength, info, newline);
 	}
 
