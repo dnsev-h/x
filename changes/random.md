@@ -1,5 +1,8 @@
 # x/random changelog
 
+## v1.0.5
+* Fix support for Greasemonkey
+
 ## v1.0.4
 * Minor API updates
   * Page type detection updated
