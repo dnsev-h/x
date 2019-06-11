@@ -1,5 +1,8 @@
 # x/infinite-scroll changelog
 
+## v1.1.3
+* Fix support for Greasemonkey
+
 ## v1.1.2
 * Minor style changes to the settings page
 
