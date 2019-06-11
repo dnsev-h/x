@@ -1,5 +1,8 @@
 # x/full-title changelog
 
+## v1.1.6
+* Fix support for Greasemonkey
+
 ## v1.1.5
 * Minor API updates
   * Settings page style changes
