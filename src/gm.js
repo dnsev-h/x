@@ -15,6 +15,14 @@ function toPromise(fn, self) {
 
 const gm = ((objects) => {
 	try {
+		const v = GM; // jshint ignore:line
+		if (v !== null && typeof(v) === "object") {
+			return v;
+		}
+	}
+	catch (e) { }
+
+	try {
 		for (const obj of objects) {
 			if (obj.GM !== null && typeof(obj.GM) === "object") {
 				return obj.GM;
