@@ -1,5 +1,8 @@
 # x/gallery-info-copy changelog
 
+## v1.0.4
+* Fix support for Greasemonkey
+
 ## v1.0.3
 * Minor API updates
   * Settings page style changes
