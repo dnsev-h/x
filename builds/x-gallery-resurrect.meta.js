@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        x/gallery-resurrect
-// @version     1.2.1
+// @version     1.2.2
 // @author      dnsev-h
 // @namespace   dnsev-h
 // @description Resurrect information about removed galleries
