@@ -4,3 +4,6 @@ body>*:not(.x-resurrected) {
 #x-gallery-resurrect-category {
 	text-decoration: none;
 }
+.x-gallery-resurrect-hidden-info {
+	display: none;
+}

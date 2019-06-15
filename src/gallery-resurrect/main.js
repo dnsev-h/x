@@ -94,6 +94,12 @@ async function insertGalleryHtml(identifier) {
 	const info = await galleryInfoFetch.get(identifier);
 	if (info === null) { return; }
 
+	const n = document.querySelector("#x-gallery-resurrect-page-url");
+	if (n !== null) {
+		const loc = window.location;
+		n.setAttribute("href", `${loc.protocol}//${loc.host}/g/${info.identifier.id}/${info.identifier.token}/`);
+	}
+
 	setGalleryInfo(body, info);
 }
 
