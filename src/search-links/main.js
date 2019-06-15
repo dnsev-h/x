@@ -3,21 +3,19 @@
 const ready = require("../ready");
 const style = require("../style");
 const pageType = require("../api/page-type");
-const settings = require("./settings");
+const galleryDetails = require("../api/gallery-details");
 const PopupMenu = require("../api/popup-menu").PopupMenu;
+const settings = require("./settings");
 
 let menu = null;
 
 
-async function setupGalleryPage() {
+async function setupGalleryPage(gd) {
 	const config = await require("./config").get();
 	const searchTargets = config.searchTargets;
 	if (!Array.isArray(searchTargets) || searchTargets.length === 0) { return; }
 
-	const galleryDetails = require("../api/gallery-details").get(true);
-	if (galleryDetails === null) { return; }
-
-	const link = galleryDetails.addLink("Custom Search", 0);
+	const link = gd.addLink("Custom Search", 0);
 	if (link === null) { return; }
 
 	link.addEventListener("click", (e) => onMenuLinkClick(e, link, searchTargets), false);
@@ -112,16 +110,17 @@ function main() {
 	settings.addLink();
 
 	const currentPageType = pageType.get(document, location);
-	switch (currentPageType) {
-		case "gallery":
-			insertStylesheet();
-			setupGalleryPage();
-			break;
-		case "settings":
-			insertStylesheet();
-			settings.initialize();
-			break;
+	if (currentPageType === "settings") {
+		insertStylesheet();
+		settings.initialize();
+		return;
 	}
+
+	(async () => {
+		const gd = await galleryDetails.waitFor();
+		insertStylesheet();
+		setupGalleryPage(gd);
+	})();
 }
 
 
