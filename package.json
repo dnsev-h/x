@@ -43,8 +43,8 @@
 		"undef": true,
 		"curly": true,
 		"eqnull": false,
-		"forin" : true,
-		"varstmt" : false,
+		"forin": true,
+		"varstmt": false,
 		"unused": "vars",
 		"quotmark": "double"
 	}
