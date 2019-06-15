@@ -48,11 +48,11 @@ function createMenu(searchTargets) {
 		});
 	}
 
-	if (options.length === 0) { return; }
+	if (options.length === 0) { return null; }
 
 	const getGalleryInfoFromHtml = require("../api/gallery-info/get-from-html");
 	const info = getGalleryInfoFromHtml(document.documentElement, window.location.href);
-	if (info === null) { return; }
+	if (info === null) { return null; }
 
 	const replacements = getGalleryInfoReplacements(info);
 
