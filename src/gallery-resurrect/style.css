@@ -1,4 +1,4 @@
-body>*:not(.x-resurrected) {
+body>*:not(.x-resurrected):not(.x-popup-menu) {
 	display: none !important;
 }
 #x-gallery-resurrect-category {
