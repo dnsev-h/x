@@ -5,7 +5,9 @@ const galleryDetailsStylesheetId = "x-gallery-details-style";
 const galleryDetailsContainerId = "x-gallery-details";
 const galleryDetailsLinksContainerClassName = "x-gallery-details-links";
 const galleryDetailsContentContainerClassName = "x-gallery-details-content-container";
+
 let galleryDetailsInstance = null;
+let waitForGalleryDetailsPromise = null;
 
 
 class GalleryDetails {
@@ -124,7 +126,36 @@ function getGalleryDetails(allowCreate) {
 	return galleryDetailsInstance;
 }
 
+function waitForGalleryDetails() {
+	const gd = getGalleryDetails(true);
+	if (gd !== null) { return Promise.resolve(gd); }
+
+	if (waitForGalleryDetailsPromise === null) {
+		waitForGalleryDetailsPromise = createWaitForGalleryDetailsPromise();
+	}
+
+	return waitForGalleryDetailsPromise;
+}
+
+function createWaitForGalleryDetailsPromise() {
+	return new Promise((resolve) => {
+		const mo = new MutationObserver(() => {
+			const gd = getGalleryDetails(true);
+			if (gd === null) { return; }
+
+			mo.disconnect();
+			waitForGalleryDetailsPromise = null;
+			resolve(gd);
+		});
+		mo.observe(document.body, {
+			childList: true,
+			subtree: true
+		});
+	});
+}
+
 
 module.exports = {
-	get: getGalleryDetails
+	get: getGalleryDetails,
+	waitFor: waitForGalleryDetails
 };
