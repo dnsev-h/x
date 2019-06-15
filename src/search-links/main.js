@@ -74,7 +74,8 @@ function formatUrl(url, replacements) {
 function getGalleryInfoReplacements(galleryInfo) {
 	return {
 		"short-name": encodeURIComponent(getShortTitle(galleryInfo.title)),
-		"full-name": encodeURIComponent(galleryInfo.title)
+		"full-name": encodeURIComponent(galleryInfo.title),
+		"url": encodeURIComponent(getGalleryUrl(galleryInfo.identifier))
 	};
 }
 
@@ -90,6 +91,11 @@ function getShortTitle(title) {
 		title = title.substr(0, m.index);
 	}
 	return title;
+}
+
+function getGalleryUrl(id) {
+	const loc = window.location;
+	return `${loc.protocol}//${loc.host}/g/${id.id}/${id.token}/`;
 }
 
 

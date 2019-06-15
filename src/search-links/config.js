@@ -26,6 +26,21 @@ const searchTargetsDefault = [
 		title: "Search by Name (hitomi.la)",
 		url: "https://hitomi.la/search.html?{short-name}",
 		enabled: true
+	},
+	{
+		title: "Search by Full Name (chaika)",
+		url: "https://panda.chaika.moe/search/?qsearch={full-name}",
+		enabled: true
+	},
+	{
+		title: "Search by Name (chaika)",
+		url: "https://panda.chaika.moe/search/?qsearch={short-name}",
+		enabled: true
+	},
+	{
+		title: "Search by URL (chaika)",
+		url: "https://panda.chaika.moe/search/?qsearch={url}",
+		enabled: true
 	}
 ];
 const configDefault = {
