@@ -1,5 +1,8 @@
 # x/gallery-resurrect changelog
 
+## v1.2.3
+* Improve compatibility with search-links
+
 ## v1.2.2
 * Fix support for Greasemonkey
 
