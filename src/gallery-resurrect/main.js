@@ -134,7 +134,7 @@ function setGalleryInfo(html, info) {
 	html.querySelector("#x-gallery-resurrect-date-uploaded").textContent = getTimestampDateString(info.dateUploaded);
 	html.querySelector("#x-gallery-resurrect-visible").textContent = (info.visible ? "Yes" : "No");
 	html.querySelector("#x-gallery-resurrect-file-size").textContent = getPrettyFileSize(info.approximateTotalFileSize);
-	html.querySelector("#x-gallery-resurrect-file-count").textContent = plural(info.fileCount, " file", " files");
+	html.querySelector("#x-gallery-resurrect-file-count").textContent = plural(info.fileCount, " page", " pages");
 	if (typeof(info.language) === "string") {
 		const suffix = info.translated ? ` \xa0` : ""; // &nbsp;
 		n = html.querySelector("#x-gallery-resurrect-language");
