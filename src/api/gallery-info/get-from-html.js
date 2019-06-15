@@ -62,7 +62,13 @@ function getTitleOriginal(html) {
 
 function getMainThumbnailUrl(html) {
 	const node = html.querySelector("#gd1>div");
-	return (node !== null ? getCssUrl(node.style.backgroundImage) : null);
+	if (node === null) { return null; }
+
+	let url = getCssUrl(node.style.backgroundImage);
+	if (url !== null) { return url; }
+
+	const img = node.querySelector("img[src]");
+	return (img !== null ? img.getAttribute("src") : null);
 }
 
 function getCategory(html) {
