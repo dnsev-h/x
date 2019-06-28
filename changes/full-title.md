@@ -1,5 +1,8 @@
 # x/full-title changelog
 
+## v1.1.7
+* Fix support for favorites pages
+
 ## v1.1.6
 * Fix support for Greasemonkey
 
