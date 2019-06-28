@@ -8,7 +8,7 @@ class InfiniteScrollBase {
 
 		this._isActive = false;
 		this._scrollY = 0;
-		this._onScroll = () => onScrollChanged.call(this, false);
+		this._onScrollChangedCallback = () => this._onScrollChanged(false);
 	}
 
 	loadNextPage() {}
@@ -21,45 +21,42 @@ class InfiniteScrollBase {
 			if (this._isActive) { return; }
 			this._isActive = true;
 			this._scrollY = getPageScrollY();
-			this.containerNode.addEventListener("scroll", this._onScroll, false);
+			this.containerNode.addEventListener("scroll", this._onScrollChangedCallback, false);
 		} else {
 			if (!this._isActive) { return; }
 			this._isActive = false;
-			this.containerNode.removeEventListener("scroll", this._onScroll, false);
+			this.containerNode.removeEventListener("scroll", this._onScrollChangedCallback, false);
 		}
 	}
 
 	updateCheck() {
-		onScrollChanged.call(this, true);
-	}
-}
-
-
-function onScrollChanged(force) {
-	/* jshint -W040 */
-	const scrollYNew = getPageScrollY();
-	const scrollYPre = this._scrollY;
-	this._scrollY = scrollYNew;
-
-	// Must have valid target
-	if (this.pageNode === null) { return; }
-
-	// Don't load if already loading, if not scrolled at all, or if scrolling up
-	if (force !== true) {
-		if (scrollYNew < 1 || scrollYNew <= scrollYPre) { return; }
+		this._onScrollChanged(true);
 	}
 
-	// Don't load if the current page is entirely off-screen
-	const rect = this.pageNode.getBoundingClientRect();
-	if (rect.y + rect.height < 0) { return; }
+	_onScrollChanged(force) {
+		const scrollYNew = getPageScrollY();
+		const scrollYPre = this._scrollY;
+		this._scrollY = scrollYNew;
 
-	// Don't load if not enough of the page has been viewed
-	const height = getWindowHeight();
-	if (rect.y + rect.height * this.pageViewPercentRequired >= height) { return; }
+		// Must have valid target
+		if (this.pageNode === null) { return; }
 
-	// Load
-	this.loadNextPage();
-	/* jshint +W040 */
+		// Don't load if already loading, if not scrolled at all, or if scrolling up
+		if (force !== true) {
+			if (scrollYNew < 1 || scrollYNew <= scrollYPre) { return; }
+		}
+
+		// Don't load if the current page is entirely off-screen
+		const rect = this.pageNode.getBoundingClientRect();
+		if (rect.y + rect.height < 0) { return; }
+
+		// Don't load if not enough of the page has been viewed
+		const height = getWindowHeight();
+		if (rect.y + rect.height * this.pageViewPercentRequired >= height) { return; }
+
+		// Load
+		this.loadNextPage();
+	}
 }
 
 function getWindowHeight() {
