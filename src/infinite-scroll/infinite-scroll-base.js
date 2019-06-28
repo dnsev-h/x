@@ -9,6 +9,9 @@ class InfiniteScrollBase {
 		this._isActive = false;
 		this._scrollY = 0;
 		this._onScrollChangedCallback = () => this._onScrollChanged(false);
+		this._onWheelCallback = () => this._onWheel();
+		this._wheelDelay = 0.1 * 1000; // milliseconds
+		this._wheelTimeout = null;
 	}
 
 	loadNextPage() {}
@@ -22,10 +25,13 @@ class InfiniteScrollBase {
 			this._isActive = true;
 			this._scrollY = getPageScrollY();
 			this.containerNode.addEventListener("scroll", this._onScrollChangedCallback, false);
+			document.addEventListener("wheel", this._onWheelCallback, false);
 		} else {
 			if (!this._isActive) { return; }
 			this._isActive = false;
 			this.containerNode.removeEventListener("scroll", this._onScrollChangedCallback, false);
+			document.removeEventListener("wheel", this._onWheelCallback, false);
+			this._clearWheelTimeout();
 		}
 	}
 
@@ -37,6 +43,8 @@ class InfiniteScrollBase {
 		const scrollYNew = getPageScrollY();
 		const scrollYPre = this._scrollY;
 		this._scrollY = scrollYNew;
+
+		this._clearWheelTimeout();
 
 		// Must have valid target
 		if (this.pageNode === null) { return; }
@@ -56,6 +64,23 @@ class InfiniteScrollBase {
 
 		// Load
 		this.loadNextPage();
+	}
+
+	_onWheel() {
+		this._clearWheelTimeout();
+		this._wheelTimeout = setTimeout(() => this._onWheelTimeout(), this._wheelDelay);
+	}
+
+	_onWheelTimeout() {
+		this._wheelTimeout = null;
+		this._onScrollChanged(true);
+	}
+
+	_clearWheelTimeout() {
+		if (this._wheelTimeout !== null) {
+			clearTimeout(this._wheelTimeout);
+			this._wheelTimeout = null;
+		}
 	}
 }
 
