@@ -14,7 +14,9 @@
 }
 
 :root[data-x-option-full-title-display-mode=hover] .itg>.gl1t:hover>a:first-of-type,
-:root[data-x-option-full-title-display-mode=always] .itg>.gl1t>a:first-of-type {
+:root[data-x-option-full-title-display-mode=always] .itg>.gl1t>a:first-of-type,
+:root[data-x-option-full-title-display-mode=hover] .itg>.gl1t:hover>.glname,
+:root[data-x-option-full-title-display-mode=always] .itg>.gl1t>.glname {
 	overflow: visible;
 	z-index: 10;
 }
@@ -24,20 +26,35 @@
 	padding-bottom: 0.25em;
 }
 
+:root[data-x-option-full-title-display-mode=hover] .itg>.gl1t:hover>.glname>div:first-of-type,
+:root[data-x-option-full-title-display-mode=always] .itg>.gl1t>.glname>div:first-of-type {
+	padding-bottom: 0.25em;
+	margin-right: -30px;
+	padding-right: 30px;
+}
+
 :root[data-x-option-full-title-display-mode=hover] .itg>.gl1t:hover:nth-child(2n+1)>a:first-of-type>.glname,
-:root[data-x-option-full-title-display-mode=always] .itg>.gl1t:nth-child(2n+1)>a:first-of-type>.glname {
+:root[data-x-option-full-title-display-mode=always] .itg>.gl1t:nth-child(2n+1)>a:first-of-type>.glname,
+:root[data-x-option-full-title-display-mode=hover] .itg>.gl1t:hover:nth-child(2n+1)>.glname>div:first-of-type,
+:root[data-x-option-full-title-display-mode=always] .itg>.gl1t:nth-child(2n+1)>.glname>div:first-of-type {
 	background-color: rgba(242, 240, 228, 0.75);
 }
 :root[data-x-option-full-title-display-mode=hover] .itg>.gl1t:hover:nth-child(2n+2)>a:first-of-type>.glname,
-:root[data-x-option-full-title-display-mode=always] .itg>.gl1t:nth-child(2n+2)>a:first-of-type>.glname {
+:root[data-x-option-full-title-display-mode=always] .itg>.gl1t:nth-child(2n+2)>a:first-of-type>.glname,
+:root[data-x-option-full-title-display-mode=hover] .itg>.gl1t:hover:nth-child(2n+2)>.glname>div:first-of-type,
+:root[data-x-option-full-title-display-mode=always] .itg>.gl1t:nth-child(2n+2)>.glname>div:first-of-type {
 	background-color: rgba(237, 235, 223, 0.75);
 }
 
 :root.x-is-dark[data-x-option-full-title-display-mode=hover] .itg>.gl1t:hover:nth-child(2n+1)>a:first-of-type>.glname,
-:root.x-is-dark[data-x-option-full-title-display-mode=always] .itg>.gl1t:nth-child(2n+1)>a:first-of-type>.glname {
+:root.x-is-dark[data-x-option-full-title-display-mode=always] .itg>.gl1t:nth-child(2n+1)>a:first-of-type>.glname,
+:root[data-x-option-full-title-display-mode=hover] .itg>.gl1t:hover:nth-child(2n+1)>.glname>div:first-of-type,
+:root[data-x-option-full-title-display-mode=always] .itg>.gl1t:nth-child(2n+1)>.glname>div:first-of-type {
 	background-color: rgba(54, 57, 64, 0.75);
 }
 :root.x-is-dark[data-x-option-full-title-display-mode=hover] .itg>.gl1t:hover:nth-child(2n+2)>a:first-of-type>.glname,
-:root.x-is-dark[data-x-option-full-title-display-mode=always] .itg>.gl1t:nth-child(2n+2)>a:first-of-type>.glname {
+:root.x-is-dark[data-x-option-full-title-display-mode=always] .itg>.gl1t:nth-child(2n+2)>a:first-of-type>.glname,
+:root[data-x-option-full-title-display-mode=hover] .itg>.gl1t:hover:nth-child(2n+2)>.glname>div:first-of-type,
+:root[data-x-option-full-title-display-mode=always] .itg>.gl1t:nth-child(2n+2)>.glname>div:first-of-type {
 	background-color: rgba(60, 65, 75, 0.75);
 }
