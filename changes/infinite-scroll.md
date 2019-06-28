@@ -1,7 +1,10 @@
 # x/infinite-scroll changelog
 
+## v1.1.4
+* Fixed new pages not loading if the web page cannot be scrolled
+
 ## v1.1.3
-* Fix support for Greasemonkey
+* Fixed support for Greasemonkey
 
 ## v1.1.2
 * Minor style changes to the settings page
