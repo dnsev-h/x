@@ -1,7 +1,7 @@
 "use strict";
 
 const ready = require("../ready");
-const fetch = require("../fetch");
+const fetch = require("../fetch"); // jshint ignore:line
 const pageType = require("../api/page-type");
 const pagination = require("../api/pagination");
 const toCommonJson = require("../api/gallery-info/common-json").toCommonJson;
@@ -10,7 +10,7 @@ const gFetch = require("../api/gallery-info/fetch");
 
 
 let delayPromise = null;
-let delayTime = 1;
+const delayTime = 1.0;
 
 async function waitDelay() {
 	if (delayPromise !== null) {
@@ -28,7 +28,14 @@ function setDelay(time) {
 }
 
 
-async function start(status, textarea) {
+function formatTorrentLink(format, vars) {
+	return format.replace(/\{(\w+)\}/g, (m0, m1) => {
+		return Object.prototype.hasOwnProperty.call(vars, m1) ? vars[m1] : m0;
+	});
+}
+
+
+async function fetchMetadata(status, textarea) {
 	let results = "";
 	const p = pagination.getInfo(document.documentElement);
 	for (let i = 0; i < p.pageCount; ++i) {
@@ -72,10 +79,11 @@ async function start(status, textarea) {
 			textarea.value = results;
 		}
 	}
+
 	status.textContent = "Done";
 }
 
-async function startTorrent(status, textarea) {
+async function fetchTorrentLinks(status, textarea, torrentLinkFormat) {
 	let results = "";
 	const p = pagination.getInfo(document.documentElement);
 	for (let i = 0; i < p.pageCount; ++i) {
@@ -105,7 +113,7 @@ async function startTorrent(status, textarea) {
 			const id = infos[j].identifier;
 			let src2;
 			try {
-				src2 = await fetch.get({ url: `https://exhentai.org/gallerytorrents.php?gid=${id.id}&t=${id.token}`, gm: true });
+				src2 = await fetch.get({ url: `/gallerytorrents.php?gid=${id.id}&t=${id.token}`, gm: true });
 			} catch (e) {
 				continue;
 			} finally {
@@ -116,12 +124,33 @@ async function startTorrent(status, textarea) {
 			const links = doc2.documentElement.querySelectorAll("form a[href][onclick]");
 			for (let k = 0; k < links.length; ++k) {
 				const link = links[k];
-				results += "curl " + link.getAttribute("href") + " --output " + id.id + "_" + id.token + "_" + k + ".torrent\n";
+				results += formatTorrentLink(torrentLinkFormat.value, {
+					url: link.getAttribute("href"),
+					id: id.id,
+					token: id.token,
+					index: k
+				}) + "\n";
 				textarea.value = results;
 			}
 		}
 	}
+
 	status.textContent = "Done";
+}
+
+
+let previousDownloadUrl = null;
+function download(downloadLink, textarea) {
+	const blob = new Blob([ textarea.value ], { type: "text/plain" });
+	const url = URL.createObjectURL(blob);
+
+	if (previousDownloadUrl !== null) {
+		URL.revokeObjectURL(previousDownloadUrl);
+		previousDownloadUrl = null;
+	}
+
+	previousDownloadUrl = url;
+	downloadLink.setAttribute("href", url);
 }
 
 
@@ -129,24 +158,22 @@ function main() {
 	const currentPageType = pageType.get(document, location);
 	if (currentPageType !== "favorites") { return; }
 
-	const n = document.createElement("textarea");
-	n.wrap = "hard";
-	n.style.whiteSpace = "pre";
-	n.spellcheck = false;
-	document.body.insertBefore(n, document.body.firstChild);
+	const container = document.createElement("div");
+	container.innerHTML = require("./content.html");
 
-	const s = document.createElement("div");
-	document.body.insertBefore(s, document.body.firstChild);
+	const par = document.body;
+	if (par.firstElementChild !== null) {
+		par.insertBefore(container, par.firstElementChild);
+	}
 
-	let b = document.createElement("button");
-	b.textContent = "Fetch Metadata";
-	b.addEventListener("click", () => start(s, n), false);
-	document.body.insertBefore(b, document.body.firstChild);
+	const textarea = container.querySelector("#x-favorites-scrape-textarea");
+	const status = container.querySelector("#x-favorites-scrape-status");
+	const torrentLinkFormat = container.querySelector("#x-favorites-scrape-torrent-link-format");
 
-	b = document.createElement("button");
-	b.textContent = "Fetch Torrent Links";
-	b.addEventListener("click", () => startTorrent(s, n), false);
-	document.body.insertBefore(b, document.body.firstChild);
+	container.querySelector("#x-favorites-scrape-fetch-metadata").addEventListener("click", () => fetchMetadata(status, textarea), false);
+	container.querySelector("#x-favorites-scrape-fetch-torrent-links").addEventListener("click", () => fetchTorrentLinks(status, textarea, torrentLinkFormat), false);
+	const downloadLink = container.querySelector("#x-favorites-scrape-option-download");
+	downloadLink.addEventListener("mousedown", () => download(downloadLink, textarea), false);
 }
 
 

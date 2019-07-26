@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name        x/favorites-scrape
-// @version     1.0.1
+// @version     1.0.2
 // @author      dnsev-h
 // @namespace   dnsev-h
-// @description Fetch information about galleries
+// @description Fetch information about favorite galleries
 // @run-at      document-start
 // @grant       GM_xmlhttpRequest
 // @grant       GM.xmlHttpRequest

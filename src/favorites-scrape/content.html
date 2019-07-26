@@ -1,0 +1,14 @@
+<div style="min-width: 930px; max-width: 1370px; margin: 0 auto 2em; text-align: center;">
+	<div class="x-favorites-scrape-buttons"><button id="x-favorites-scrape-fetch-metadata">Fetch Metadata</button><button id="x-favorites-scrape-fetch-torrent-links">Fetch Torrent Links</button></div>
+	<div id="x-favorites-scrape-status"></div>
+	<div style="text-align: left;">
+		Torrent link list format<br />
+		<input id="x-favorites-scrape-torrent-link-format" type="text" style="width: 100%;" value="curl {url} --output {id}_{token}_{index}.torrent" />
+	</div>
+	<div class="x-favorites-scrape-textarea-container">
+		<textarea id="x-favorites-scrape-textarea" style="width: 100%; white-space: pre; height: 10em;" wrap="hard" spellcheck="false"></textarea>
+	</div>
+	<div class="x-favorites-scrape-options-container">
+		<a id="x-favorites-scrape-option-download" style="cursor: pointer;" download="content.txt" target="_blank">Download</a>
+	</div>
+</div>
