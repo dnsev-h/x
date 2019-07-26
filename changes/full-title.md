@@ -1,5 +1,8 @@
 # x/full-title changelog
 
+## v1.1.8
+* Improved compatibility with dark theme
+
 ## v1.1.7
 * Fix support for favorites pages
 
