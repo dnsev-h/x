@@ -1,7 +1,9 @@
 "use strict";
 
 function isDark() {
-	return (window.location.hostname.indexOf("exhentai") >= 0);
+	return (
+		window.location.hostname.indexOf("exhentai") >= 0 ||
+		document.documentElement.classList.contains("x-force-dark"));
 }
 
 function setDocumentDarkFlag() {

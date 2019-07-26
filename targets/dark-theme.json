@@ -1,0 +1,34 @@
+{
+	"files": [
+		{ "file": "../src/dark-theme/main.js" }
+	],
+	"options": {
+		"debug": true,
+		"bare": true
+	},
+	"target": "../builds/x-dark-theme.user.js",
+	"targetMeta": "../builds/x-dark-theme.meta.js",
+	"header": {
+		"name": "x/dark-theme",
+		"version": "1.0.0",
+		"author": "dnsev-h",
+		"namespace": "dnsev-h",
+		"description": "Use the ExHentai theme on E-Hentai",
+		"run-at": "document-start",
+		"include": [
+			"https://e-hentai.org/*"
+		],
+		"icon": {
+			"value": "../images/icon-48.png",
+			"transform": "toDataUrl"
+		},
+		"icon64": {
+			"value": "../images/icon-64.png",
+			"transform": "toDataUrl"
+		},
+		"homepage": "https://dnsev-h.github.io/x/",
+		"supportURL": "https://github.com/dnsev-h/x/issues",
+		"updateURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-dark-theme.meta.js",
+		"downloadURL": "https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-dark-theme.user.js"
+	}
+}

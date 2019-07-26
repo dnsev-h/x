@@ -1,0 +1,17 @@
+div.fp{height:20px;cursor:pointer;border-radius:9px;border:1px solid transparent}
+div.fp:hover{background:#43464e;border:1px solid #5c5c5c}
+div.fps{background:#43464e;border:1px solid #5c5c5c}
+@supports(display:grid){
+	.gld{display:grid;grid-template-columns:repeat(5,1fr)}
+	.gl1t{min-width:250px;max-width:400px}
+	@media screen and (max-width:1360px) {
+		.gld{grid-template-columns:repeat(4,1fr)}
+		.gl1t:nth-child(8n+1),.gl1t:nth-child(8n+3),.gl1t:nth-child(8n+6),.gl1t:nth-child(8n+8){background:#363940}
+		.gl1t:nth-child(8n+2),.gl1t:nth-child(8n+4),.gl1t:nth-child(8n+5),.gl1t:nth-child(8n+7){background:#EDEBDF}
+	}
+	@media screen and (max-width:1120px) {
+		.gld{grid-template-columns:repeat(3,1fr)}
+		.gl1t:nth-child(2n+1){background:#363940}
+		.gl1t:nth-child(2n+2){background:#EDEBDF}
+	}
+}
