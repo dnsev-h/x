@@ -75,6 +75,56 @@ async function start(status, textarea) {
 	status.textContent = "Done";
 }
 
+async function startTorrent(status, textarea) {
+	let results = "";
+	const p = pagination.getInfo(document.documentElement);
+	for (let i = 0; i < p.pageCount; ++i) {
+		await waitDelay();
+
+		const pageUrl = p.createPageUrl(i);
+		status.textContent = `Page ${i} of ${p.pageCount}`;
+
+		let src;
+		try {
+			src = await fetch.get({ url: pageUrl, gm: true });
+		} catch (e) {
+			console.log(e);
+			--i;
+			continue;
+		} finally {
+			setDelay(delayTime);
+		}
+
+		const doc = new DOMParser().parseFromString(src.responseText, "text/html");
+		const infos = pagination.getGalleryUrls(doc.documentElement).map((v) => gUtils.getGalleryIdentifierAndPageFromUrl(v));
+
+		const countPerPage = 1;
+		for (let j = 0; j < infos.length; j += countPerPage) {
+			status.textContent = `Page ${i} of ${p.pageCount} (${j} of ${infos.length})`;
+			await waitDelay();
+			const id = infos[j].identifier;
+			let src2;
+			try {
+				src2 = await fetch.get({ url: `https://exhentai.org/gallerytorrents.php?gid=${id.id}&t=${id.token}`, gm: true });
+			} catch (e) {
+				continue;
+			} finally {
+				setDelay(delayTime);
+			}
+
+			const doc2 = new DOMParser().parseFromString(src2.responseText, "text/html");
+			const links = doc2.documentElement.querySelectorAll("form a[href][onclick]");
+			for (let k = 0; k < links.length; ++k) {
+				const link = links[k];
+				results += "curl " + link.getAttribute("href") + " --output " + id.id + "_" + id.token + "_" + k + ".torrent\n";
+				textarea.value = results;
+			}
+		}
+	}
+	status.textContent = "Done";
+}
+
+// https://exhentai.org/gallerytorrents.php?gid=1182580&t=d1f08c9a6d
 
 function main() {
 	const currentPageType = pageType.get(document, location);
@@ -89,9 +139,14 @@ function main() {
 	const s = document.createElement("div");
 	document.body.insertBefore(s, document.body.firstChild);
 
-	const b = document.createElement("button");
-	b.textContent = "start";
+	let b = document.createElement("button");
+	b.textContent = "Fetch Metadata";
 	b.addEventListener("click", () => start(s, n), false);
+	document.body.insertBefore(b, document.body.firstChild);
+
+	b = document.createElement("button");
+	b.textContent = "Fetch Torrent Links";
+	b.addEventListener("click", () => startTorrent(s, n), false);
 	document.body.insertBefore(b, document.body.firstChild);
 }
 
