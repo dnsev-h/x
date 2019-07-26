@@ -124,7 +124,6 @@ async function startTorrent(status, textarea) {
 	status.textContent = "Done";
 }
 
-// https://exhentai.org/gallerytorrents.php?gid=1182580&t=d1f08c9a6d
 
 function main() {
 	const currentPageType = pageType.get(document, location);
