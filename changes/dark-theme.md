@@ -1,5 +1,8 @@
 # x/dark-theme changelog
 
+## v1.0.2
+* Insert stylesheet earlier
+
 ## v1.0.1
 * Add style for home.php
 

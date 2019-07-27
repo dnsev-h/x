@@ -37,5 +37,5 @@ function main() {
 
 
 document.documentElement.classList.add("x-is-dark", "x-force-dark", "xport_ex");
-
+insertStylesheet();
 ready.onReady(main);
