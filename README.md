@@ -24,5 +24,5 @@
 * [Search Links](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-search-links.user.js)<br>
   Add customizable search links to gallery pages.
 
-* [Search Links](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-dark-theme.user.js)<br>
+* [Dark Theme](https://raw.githubusercontent.com/dnsev-h/x/master/builds/x-dark-theme.user.js)<br>
   Use the ExHentai theme on E-Hentai.
