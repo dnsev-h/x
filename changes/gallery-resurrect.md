@@ -1,5 +1,8 @@
 # x/gallery-resurrect changelog
 
+## v1.2.4
+* Improved compatibility with dark theme
+
 ## v1.2.3
 * Improve compatibility with search-links
 
