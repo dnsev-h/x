@@ -1,5 +1,8 @@
 # x/gallery-info-copy changelog
 
+## v1.1.5
+* Improved compatibility with dark theme
+
 ## v1.0.4
 * Fix support for Greasemonkey
 
