@@ -1,5 +1,8 @@
 # x/infinite-scroll changelog
 
+## v1.1.5
+* Improved compatibility with dark theme
+
 ## v1.1.4
 * Fixed new pages not loading if the web page cannot be scrolled
 
