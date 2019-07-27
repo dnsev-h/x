@@ -14,7 +14,7 @@ function removeLightTheme() {
 	// Per-page style
 	const nodes2 = document.querySelectorAll("style[type=\"text/css\"]");
 	for (const node of nodes2) {
-		if (/^\s*(div\.fp\{|div#db\{)/.test(node.textContent) && node.parentNode) {
+		if (/^\s*(div\.fp\{|div#db\{|h1 \{font-size:)/.test(node.textContent) && node.parentNode) {
 			node.parentNode.removeChild(node);
 		}
 	}

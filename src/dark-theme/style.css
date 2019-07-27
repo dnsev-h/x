@@ -420,3 +420,11 @@ div.fps{background:#43464e;border:1px solid #5c5c5c}
 /* Archiver */
 div#db{width:450px;text-align:center;margin:5px auto auto auto;border:1px solid #c3c3c3;background:#4f535b;padding:2px 5px 2px 5px}
 
+/* Home */
+h1 {font-size:10pt; font-weight:bold; text-align:center; margin:3px }
+h2 {font-size:10pt; font-weight:bold; text-align:center; margin:10px auto 3px }
+div.homebox { border:1px solid #c3c3c3; width:600px; margin:auto; padding:3px }
+td.c1 { width:100px; font-weight:bold; text-align:right }
+td.c2 { width:120px; text-align:left; margin-bottom:2px }
+
+.homebox table tr>td[style*="border-right"] { border-right-color: #c3c3c3 !important; }
