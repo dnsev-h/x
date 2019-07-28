@@ -1,5 +1,8 @@
 # x/dark-theme changelog
 
+## v1.0.3
+* Fix stylesheet bug
+
 ## v1.0.2
 * Insert stylesheet earlier
 
