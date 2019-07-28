@@ -1,5 +1,8 @@
 # x/dark-theme changelog
 
+## v1.0.4
+* Fix favorites stars not appearing
+
 ## v1.0.3
 * Fix stylesheet bug
 

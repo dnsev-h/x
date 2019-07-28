@@ -40,11 +40,11 @@ p.ip{text-align:center;clear:both}
 
 /* rating */
 div.i{float:left;height:15px;width:15px;margin:0 1px;background-repeat:no-repeat}
-div.ir{width:80px;height:16px;background-repeat:no-repeat;background-image:url(/img/rt.png)}
+div.ir{width:80px;height:16px;background-repeat:no-repeat;background-image:url(https://ehgt.org/g/rt.png)}
 div.ir img{width:80px;height:16px}
-div.irr{background-image:url(/img/rtr.png)}
-div.irb{background-image:url(/img/rtb.png)}
-div.irg{background-image:url(/img/rtg.png)}
+div.irr{background-image:url(https://ehgt.org/g/rtr.png)}
+div.irb{background-image:url(https://ehgt.org/g/rtb.png)}
+div.irg{background-image:url(https://ehgt.org/g/rtg.png)}
 
 img.th{border:1px solid #000000;margin:1px 0px 0px;padding:0px}
 img.mr{border:0;margin-left:10px;width:5px;height:7px}
