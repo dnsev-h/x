@@ -1,5 +1,8 @@
 # x/gallery-metadata changelog
 
+## v1.2.3
+* Fix stylesheet bug
+
 ## v1.2.2
 * Improved compatibility with dark theme
 
