@@ -1,5 +1,8 @@
 # x/gallery-resurrect changelog
 
+## v1.2.5
+* Fix stylesheet bug
+
 ## v1.2.4
 * Improved compatibility with dark theme
 
