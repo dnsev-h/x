@@ -1,5 +1,8 @@
 # x/infinite-scroll changelog
 
+## v1.1.6
+* Fix stylesheet bug
+
 ## v1.1.5
 * Improved compatibility with dark theme
 
