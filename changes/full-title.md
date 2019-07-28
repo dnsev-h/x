@@ -1,5 +1,8 @@
 # x/full-title changelog
 
+## v1.1.9
+* Fix stylesheet bug
+
 ## v1.1.8
 * Improved compatibility with dark theme
 
