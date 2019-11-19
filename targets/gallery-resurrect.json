@@ -27,6 +27,10 @@
 			"https://exhentai.org/*",
 			"https://e-hentai.org/*"
 		],
+		"exclude": [
+			"https://exhentai.org/archiver.php*",
+			"https://e-hentai.org/archiver.php*"
+		],
 		"icon": {
 			"value": "../images/icon-48.png",
 			"transform": "toDataUrl"
