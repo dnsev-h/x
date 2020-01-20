@@ -70,8 +70,12 @@ function formatUrl(url, replacements) {
 }
 
 function getGalleryInfoReplacements(galleryInfo) {
+	const shortTitle = getShortTitle(galleryInfo.title);
+	const m = /^([\w\W]*)\|([\w\W]*)$/.exec(shortTitle);
 	return {
-		"short-name": encodeURIComponent(getShortTitle(galleryInfo.title)),
+		"short-name": encodeURIComponent(shortTitle),
+		"short-name1": encodeURIComponent(m !== null ? m[1] : shortTitle),
+		"short-name2": encodeURIComponent(m !== null ? m[2] : shortTitle),
 		"full-name": encodeURIComponent(galleryInfo.title),
 		"url": encodeURIComponent(getGalleryUrl(galleryInfo.identifier))
 	};
