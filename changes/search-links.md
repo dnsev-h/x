@@ -1,5 +1,9 @@
 # x/search-links changelog
 
+## v1.1.3
+* Fixed bug causing popup menu to be positioned incorrectly when first opened
+* Updated how stylesheets are injected
+
 ## v1.1.2
 * Fix stylesheet bug
 
