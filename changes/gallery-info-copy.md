@@ -1,5 +1,8 @@
 # x/gallery-info-copy changelog
 
+## v1.1.7
+* Updated how stylesheets are injected
+
 ## v1.1.6
 * Fix stylesheet bug
 
