@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        x/dark-theme
-// @version     1.0.4
+// @version     1.0.5
 // @author      dnsev-h
 // @namespace   dnsev-h
 // @description Use the ExHentai theme on E-Hentai
