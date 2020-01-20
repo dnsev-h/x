@@ -19,9 +19,8 @@ function addStylesheet(source, id) {
 	if (apiStyle === null) { apiStyle = require("./api/style"); }
 	apiStyle.setDocumentDarkFlag();
 
-	const style = document.createElement("link");
-	style.rel = "stylesheet";
-	style.href = `data:text/css;base64,${window.btoa(source)}`;
+	const style = document.createElement("style");
+	style.textContent = source;
 	if (typeof(id) === "string") {
 		style.id = getId(id);
 	}
