@@ -1,5 +1,9 @@
 # x/gallery-resurrect changelog
 
+## v1.2.6
+* archiver.php is now ignored
+* Updated how stylesheets are injected
+
 ## v1.2.5
 * Fix stylesheet bug
 
