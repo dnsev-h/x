@@ -1,5 +1,9 @@
 # x/infinite-scroll changelog
 
+## v1.1.7
+* Added total page count on page indicator
+* Updated how stylesheets are injected
+
 ## v1.1.6
 * Fix stylesheet bug
 

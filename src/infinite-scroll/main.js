@@ -90,7 +90,7 @@ class InfiniteScroll extends InfiniteScrollBase {
 		const wrapper = this._pageWrapperTemplate.cloneNode(true);
 		const link = wrapper.querySelector(".x-infinite-scroll-page-link");
 		link.setAttribute("href", this.pagesInfo.createPageUrl(pageIndex));
-		link.textContent = `Page ${pageIndex + 1}`;
+		link.textContent = `Page ${pageIndex + 1} of ${this.pagesInfo.pageCount}`;
 		wrapper.appendChild(content);
 		return wrapper;
 	}
