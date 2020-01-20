@@ -1,5 +1,8 @@
 # x/full-title changelog
 
+## v1.1.10
+* Updated how stylesheets are injected
+
 ## v1.1.9
 * Fix stylesheet bug
 
