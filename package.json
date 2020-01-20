@@ -5,10 +5,10 @@
 	"description": "Various scripts",
 	"dependencies": {},
 	"devDependencies": {
-		"browserify": "^16.2.3",
-		"browserify-css": "^0.14.0",
+		"browserify": "^16.5.0",
+		"browserify-css": "^0.15.0",
 		"html2js-browserify": "^1.3.0",
-		"http-server": "^0.11.1"
+		"http-server": "^0.12.1"
 	},
 	"scripts": {
 		"build": "node dev/build.js",
