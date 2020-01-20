@@ -1,5 +1,8 @@
 # x/gallery-metadata changelog
 
+## v1.2.4
+* Updated how stylesheets are injected
+
 ## v1.2.3
 * Fix stylesheet bug
 
