@@ -1,5 +1,8 @@
 # x/search-links changelog
 
+## v1.1.4
+* Added tags for Japanese gallery titles
+
 ## v1.1.3
 * Fixed bug causing popup menu to be positioned incorrectly when first opened
 * Updated how stylesheets are injected

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        x/search-links
-// @version     1.1.3
+// @version     1.1.4
 // @author      dnsev-h
 // @namespace   dnsev-h
 // @description Add customizable search links to gallery pages

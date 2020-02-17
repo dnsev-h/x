@@ -72,7 +72,7 @@ function formatUrl(url, replacements) {
 function getGalleryInfoReplacements(galleryInfo) {
 	const shortTitle = getShortTitle(galleryInfo.title);
 	const shortTitleJP = getShortTitle(galleryInfo.titleOriginal);
-	
+
 	const m = /^([\w\W]*)\|([\w\W]*)$/.exec(shortTitle);
 	return {
 		"short-name-jp": encodeURIComponent(shortTitleJP),
