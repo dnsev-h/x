@@ -71,12 +71,16 @@ function formatUrl(url, replacements) {
 
 function getGalleryInfoReplacements(galleryInfo) {
 	const shortTitle = getShortTitle(galleryInfo.title);
+	const shortTitleJP = getShortTitle(galleryInfo.titleOriginal);
+	
 	const m = /^([\w\W]*)\|([\w\W]*)$/.exec(shortTitle);
 	return {
+		"short-name-jp": encodeURIComponent(shortTitleJP),
 		"short-name": encodeURIComponent(shortTitle),
 		"short-name1": encodeURIComponent(m !== null ? m[1] : shortTitle),
 		"short-name2": encodeURIComponent(m !== null ? m[2] : shortTitle),
 		"full-name": encodeURIComponent(galleryInfo.title),
+		"full-name-jp": encodeURIComponent(galleryInfo.titleOriginal),
 		"url": encodeURIComponent(getGalleryUrl(galleryInfo.identifier))
 	};
 }
