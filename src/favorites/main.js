@@ -14,13 +14,13 @@ function addTextToNode(parentNode, text) {
 }
 
 function addFavoriteLink(identifier) {
-	const parent = document.querySelector("body>p.ip");
+	const parent = document.querySelector("body>.dp");
 	if (parent === null) { return; }
 
 	const urls = require("../api/urls");
 	const popups = require("../api/popups");
 
-	addTextToNode(parent, " [");
+	addTextToNode(parent, " | ");
 
 	const linkId = "x-favorites-link";
 	const favoriteUrl = urls.favoritesPopup(identifier.id, identifier.token);
@@ -30,8 +30,6 @@ function addFavoriteLink(identifier) {
 	link.setAttribute("href", favoriteUrl);
 	parent.appendChild(link);
 	popups.showOnClick(`#${linkId}`, favoriteUrl, popups.sizes.favorites);
-
-	addTextToNode(parent, "]");
 }
 
 

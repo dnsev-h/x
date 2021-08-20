@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        x/favorites
-// @version     1.0.1
+// @version     1.0.2
 // @author      dnsev-h
 // @namespace   dnsev-h
 // @description Improvements to adding favorites
