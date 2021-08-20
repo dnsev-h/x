@@ -1,5 +1,9 @@
 # x/gallery-resurrect changelog
 
+## v1.2.7
+* Added support for resurrecting galleries with a copyright claim
+* Fixed incorrect layout of resurrected right sidebar
+
 ## v1.2.6
 * archiver.php is now ignored
 * Updated how stylesheets are injected

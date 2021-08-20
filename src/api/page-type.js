@@ -43,7 +43,7 @@ function get(doc, location) {
 
 	let n = doc.querySelector("body>.d>p");
 	if (
-		(n !== null && /gallery\s+has\s+been\s+removed/i.test(n.textContent)) ||
+		(n !== null && /gallery\s+has\s+been\s+removed|gallery\s+is\s+unavailable\s+due\s+to\s+a\s+copyright\s+claim/i.test(n.textContent)) ||
 		doc.querySelector(".eze_dgallery_table") !== null) { // eze resurrection
 		return "deletedGallery";
 	}
