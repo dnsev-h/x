@@ -12,7 +12,7 @@
 	},
 	"scripts": {
 		"build": "node dev/build.js",
-		"server": "http-server ./builds -a 127.0.0.1 -p 8080 -c-1"
+		"start": "http-server ./builds -a 127.0.0.1 -p 8080 -c-1"
 	},
 	"repository": {
 		"type": "git",
