@@ -85,8 +85,8 @@ function goToUrl(url, addHistory) {
 
 async function goToRandom(currentPageType) {
 	// Get page info
-	const pageInfo = pagination.getInfo(document);
-	if (pageInfo === null) { return; }
+	const pageInfo = pagination.getInfo(document, location.href);
+	if (pageInfo === null || !pageInfo.hasPageNumbers) { return; }
 
 	const index = Math.floor(Math.random() * pageInfo.itemCount);
 	let pageIndex;

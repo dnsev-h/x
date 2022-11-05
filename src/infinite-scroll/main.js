@@ -22,6 +22,7 @@ class InfiniteScroll extends InfiniteScrollBase {
 		this.pageNode = pageNode;
 		this.pagesInfo = pagesInfo;
 		this.contentContainer = null;
+		this.pageIndex = pagesInfo.hasPageNumbers ? pagesInfo.pageCurrent : 0;
 
 		this._delayPromise = null;
 		this._isLoading = false;
@@ -49,7 +50,7 @@ class InfiniteScroll extends InfiniteScrollBase {
 		this.contentContainer = this.createContentContainer();
 		this.pageNode.parentNode.insertBefore(this.contentContainer, this.pageNode);
 
-		this.pageNode = this.createWrappedPage(this.pageNode, this.pagesInfo.pageCurrent);
+		this.pageNode = this.createWrappedPage(this.pageNode, this.pageIndex);
 		this.contentContainer.appendChild(this.pageNode);
 	}
 
@@ -89,8 +90,8 @@ class InfiniteScroll extends InfiniteScrollBase {
 
 		const wrapper = this._pageWrapperTemplate.cloneNode(true);
 		const link = wrapper.querySelector(".x-infinite-scroll-page-link");
-		link.setAttribute("href", this.pagesInfo.createPageUrl(pageIndex));
-		link.textContent = `Page ${pageIndex + 1} of ${this.pagesInfo.pageCount}`;
+		link.setAttribute("href", this.pagesInfo.getCurrentPageUrl());
+		link.textContent = `Page ${pageIndex + 1}` + (this.pagesInfo.hasPageNumbers ? ` of ${this.pagesInfo.pageCount}` : '');
 		wrapper.appendChild(content);
 		return wrapper;
 	}
@@ -112,14 +113,14 @@ class InfiniteScroll extends InfiniteScrollBase {
 	}
 
 	isComplete() {
-		return (this.pagesInfo.pageCurrent + 1 >= this.pagesInfo.pageCount);
+		return this.pagesInfo.isOnLastPage();
 	}
 
 	getNextPageUrl() {
-		return this.pagesInfo.createPageUrl(this.pagesInfo.pageCurrent + 1);
+		return this.pagesInfo.getNextPageUrl();
 	}
 
-	getPageDataFromHtml(html) {
+	getPageDataFromHtml(html, url) {
 		const content = getDefaultPageContent(html, this.pageType); // html.querySelector("#gdt");
 		if (content === null) { return null; }
 
@@ -130,7 +131,10 @@ class InfiniteScroll extends InfiniteScrollBase {
 		className += "x-infinite-scroll";
 		content.setAttribute("class", className);
 
-		return { content };
+		const pagesInfo = pagination.getInfo(html, url);
+		if (pagesInfo === null) { return null; }
+
+		return { content, pagesInfo };
 	}
 
 	async loadNextPage() {
@@ -144,6 +148,7 @@ class InfiniteScroll extends InfiniteScrollBase {
 
 		// Load data
 		const url = this.getNextPageUrl();
+		if (url === null) { return; }
 		let pageData;
 		try {
 			this._isLoading = true;
@@ -155,10 +160,11 @@ class InfiniteScroll extends InfiniteScrollBase {
 		if (pageData === null) { return; }
 
 		// Update page
-		++this.pagesInfo.pageCurrent;
+		this.pagesInfo = pageData.pagesInfo;
+		++this.pageIndex;
 
 		// Create node
-		const newPageNode = this.createWrappedPage(pageData.content, this.pagesInfo.pageCurrent);
+		const newPageNode = this.createWrappedPage(pageData.content, this.pageIndex);
 		this.contentContainer.appendChild(newPageNode);
 
 		// Done?
@@ -177,7 +183,7 @@ class InfiniteScroll extends InfiniteScrollBase {
 			try {
 				const result = await fetch.get({ url: url });
 				const doc = new DOMParser().parseFromString(result.responseText, "text/html");
-				const data = this.getPageDataFromHtml(doc);
+				const data = this.getPageDataFromHtml(doc, url);
 				if (data !== null) { return data; }
 			}
 			catch (e) {
@@ -279,7 +285,7 @@ function insertStylesheet() {
 async function initialize(pageType) {
 	if (scroller !== null) { return; }
 
-	const pagesInfo = pagination.getInfo(document);
+	const pagesInfo = pagination.getInfo(document, location.href);
 	if (pagesInfo === null) { return; }
 
 	const pageNode = getDefaultPageContent(document, pageType);

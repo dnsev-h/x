@@ -37,11 +37,12 @@ function formatTorrentLink(format, vars) {
 
 async function fetchMetadata(status, textarea) {
 	let results = "";
-	const p = pagination.getInfo(document.documentElement);
+	const p = pagination.getInfo(document.documentElement, location.href);
+	if (p === null || !p.hasPageNumbers) { return; }
 	for (let i = 0; i < p.pageCount; ++i) {
 		await waitDelay();
 
-		const pageUrl = p.createPageUrl(i);
+		const pageUrl = p.createPageUrl(i); // TODO : needs update
 		status.textContent = `Page ${i} of ${p.pageCount}`;
 
 		let src;
@@ -85,11 +86,12 @@ async function fetchMetadata(status, textarea) {
 
 async function fetchTorrentLinks(status, textarea, torrentLinkFormat) {
 	let results = "";
-	const p = pagination.getInfo(document.documentElement);
+	const p = pagination.getInfo(document.documentElement, location.href);
+	if (p === null || !p.hasPageNumbers) { return; }
 	for (let i = 0; i < p.pageCount; ++i) {
 		await waitDelay();
 
-		const pageUrl = p.createPageUrl(i);
+		const pageUrl = p.createPageUrl(i); // TODO : needs update
 		status.textContent = `Page ${i} of ${p.pageCount}`;
 
 		let src;

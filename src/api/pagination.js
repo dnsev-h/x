@@ -7,7 +7,7 @@ const reResults = /([0-9,]+)\s*results?/i;
 
 
 class PageinationInfo {
-	constructor(pageCurrent, pageCount, itemCount, itemsOnPage, itemsPerPage, urlBase, pageFieldName) {
+	constructor(pageCurrent, pageCount, itemCount, itemsOnPage, itemsPerPage, urlBase, pageFieldName, hasPageNumbers, currentUrl, nextUrl) {
 		this.pageCurrent = pageCurrent;
 		this.pageCount = pageCount;
 		this.itemCount = itemCount;
@@ -15,6 +15,9 @@ class PageinationInfo {
 		this.itemsPerPage = itemsPerPage;
 		this.urlBase = urlBase;
 		this.pageFieldName = pageFieldName;
+		this.hasPageNumbers = hasPageNumbers;
+		this.currentUrl = currentUrl;
+		this.nextUrl = nextUrl;
 	}
 
 	createPageUrl(pageIndex) {
@@ -27,6 +30,21 @@ class PageinationInfo {
 				(m2 || ""));
 			return `${m1}${m2}${m3 || ""}`;
 		});
+	}
+
+	getCurrentPageUrl() {
+		return this.hasPageNumbers ? this.createPageUrl(this.pageCurrent) : this.currentUrl;
+	}
+
+	getNextPageUrl() {
+		return this.hasPageNumbers ? this.createPageUrl(this.pageCurrent + 1) : this.nextUrl;
+	}
+
+	isOnLastPage() {
+		return (
+			this.itemsOnPage === 0 ||
+			(this.hasPageNumbers ? (this.pageCurrent + 1 >= this.pageCount) : (this.nextUrl === null))
+		)
 	}
 }
 
@@ -43,7 +61,7 @@ function getPagesForImage(html) {
 
 	const pageCurrent = parseNumber(nodes[0].textContent, 1) - 1;
 	const pageCount = parseNumber(nodes[1].textContent, 0);
-	return new PageinationInfo(pageCurrent, pageCount, pageCount, 1, 1, null, null);
+	return new PageinationInfo(pageCurrent, pageCount, pageCount, 1, 1, null, null, true, null, null);
 }
 
 function calculateItemsPerPage(pageCurrent, pageCount, itemCount, itemsOnPage) {
@@ -71,6 +89,19 @@ function getItemsForGalleryImages(pageList, pageCurrent, pageCount) {
 		null;
 }
 
+function getItemsOnPage(html) {
+	let itemsOnPage = 0;
+	let nodes = html.querySelectorAll("div.itg>div");
+	if ((itemsOnPage = nodes.length) === 0) {
+		nodes = html.querySelectorAll("table.itg>tbody>tr");
+		itemsOnPage = nodes.length;
+		if (itemsOnPage > 0 && nodes[0].querySelector("th") !== null) {
+			--itemsOnPage; // Header row
+		}
+	}
+	return itemsOnPage;
+}
+
 function getItemsForGalleryList(html, pageCurrent, pageCount) {
 	let itemCount = null;
 	for (const ipNode of html.querySelectorAll("p.ip")) {
@@ -86,15 +117,7 @@ function getItemsForGalleryList(html, pageCurrent, pageCount) {
 
 	if (itemCount === null) { return null; }
 
-	let itemsOnPage = 0;
-	let nodes = html.querySelectorAll("div.itg>div");
-	if ((itemsOnPage = nodes.length) === 0) {
-		nodes = html.querySelectorAll("table.itg>tbody>tr");
-		itemsOnPage = nodes.length;
-		if (itemsOnPage > 0 && nodes[0].querySelector("th") !== null) {
-			--itemsOnPage; // Header row
-		}
-	}
+	let itemsOnPage = getItemsOnPage(html);
 
 	const itemsPerPage = calculateItemsPerPage(pageCurrent, pageCount, itemCount, itemsOnPage);
 
@@ -142,15 +165,46 @@ function getPagesForGalleryList(html, pageList) {
 		}
 	}
 
-	return new PageinationInfo(pageCurrent, pageCount, itemCount, itemsOnPage, itemsPerPage, urlBase, pageFieldName);
+	return new PageinationInfo(pageCurrent, pageCount, itemCount, itemsOnPage, itemsPerPage, urlBase, pageFieldName, true, null, null);
+}
+
+function getPagesForGalleryListWithoutPageIndexes(html, searchNav, url) {
+	// Url
+	let nextUrl = null;
+	const link = searchNav.querySelector("#unext[href]");
+	if (link !== null) {
+		nextUrl = link.getAttribute("href");
+	}
+
+	// Total count
+	let itemCount = 0;
+	const node = html.querySelector('.searchtext>p');
+	if (node !== null) {
+		for (const n of node.childNodes) {
+			if (n.nodeType !== Node.TEXT_NODE) { continue; }
+			const match = reResults.exec(n.nodeValue);
+			if (match !== null) {
+				itemCount = parseNumber(match[1], 0);
+				break;
+			}
+		}
+	}
+
+	const itemsOnPage = getItemsOnPage(html);
+	const itemsPerPage = itemsOnPage; // Assumed to be the same
+
+	return new PageinationInfo(0, 0, itemCount, itemsOnPage, itemsPerPage, null, null, false, url, nextUrl);
 }
 
 
-function getInfo(html) {
+function getInfo(html, url) {
 	if (!html) { html = document; }
 
 	const pageList = html.querySelector(".ptt");
-	return pageList !== null ? getPagesForGalleryList(html, pageList) : getPagesForImage(html);
+	if (pageList !== null) { return getPagesForGalleryList(html, pageList); }
+	const searchNav = html.querySelector('.searchnav');
+	if (searchNav !== null) { return getPagesForGalleryListWithoutPageIndexes(html, searchNav, url); }
+	return getPagesForImage(html);
 }
 
 
