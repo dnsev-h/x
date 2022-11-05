@@ -1,5 +1,8 @@
 # x/infinite-scroll changelog
 
+## v1.1.8
+* Updated support for gallery lists that don't have page numbers
+
 ## v1.1.7
 * Added total page count on page indicator
 * Updated how stylesheets are injected

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        x/infinite-scroll
-// @version     1.1.7
+// @version     1.1.8
 // @author      dnsev-h
 // @namespace   dnsev-h
 // @description Infinite scrolling for gallery lists and images
